@@ -13,6 +13,7 @@ import Footer from './includes/Footer';
 
 function Mainpage(props) {
     let [lang, setlang] = useState()
+    let [count, setcount] = useState()
     const params =  useParams()
     
     useEffect(()=>{
@@ -25,10 +26,16 @@ function Mainpage(props) {
 
         props.lang(message)
       };
+
+      const countset = (message) => {
+        setcount(message);
+        
+        props.country(message)
+      };
     
   return (
   <>
-    <Header lang={langset}></Header>
+    <Header country={countset}lang={langset}></Header>
     <div className='page'>
     <div className='BannerWarp'>
     <Banner></Banner>

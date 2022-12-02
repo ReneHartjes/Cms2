@@ -6,7 +6,7 @@ function Bestseller(props) {
     let [bestseller, setbestseller] = useState([])
     useEffect(()=>{
         console.log(props.lang)
-        fetch('http://164.90.160.246:8080/text/bestseller/'+props.lang)
+        fetch('http://localhost:8080/text/bestseller/'+props.lang)
         .then(res=>res.json())
         .then(json=>setbestseller(json))
     },[props.lang])

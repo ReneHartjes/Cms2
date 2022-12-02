@@ -9,6 +9,7 @@ import Banner from './includes/Banner';
 import Mainpagetext from './includes/Mainpagetext';
 import Bestseller from './includes/Bestseller';
 import Footer from './includes/Footer';
+import Systemblock from './includes/Systemblock'
 
 
 function Mainpage(props) {
@@ -34,7 +35,7 @@ function Mainpage(props) {
  
     </div>
     <div className='page-wrap'>
-
+    <Systemblock lange = {lang}></Systemblock>
   </div>  
   </div>
   <Footer></Footer>

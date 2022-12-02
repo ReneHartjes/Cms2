@@ -12,6 +12,7 @@ function Header(props) {
     const [lang, setlang]= useState([])
     const [langoption, setlangoption] = useState()
     const [headwords, setheadwords] =useState([])
+    const [country, setcountry] =useState()
     const [headwordsger, setheadwordsger] = useState([
         "Große Auswahl", "Schnelle Lieferung","Höchste Qualität", "Maximale Sicherheit","Fragen?Rufen Sie uns am:02822-915-69-0", "Benutzername", "Passwort", "Anmelden",
         "Suchen","PRODUKTE", "SYSTEME", "HIGHLIGHTS", "BESTSELLER", "%SALE", "Ausloggen"
@@ -32,6 +33,10 @@ function Header(props) {
             setheadwords(headwordseng)
          
         }
+        if(localStorage.getItem("Country")){
+            setcountry(localStorage.getItem("Country"))
+         
+        }
     },localStorage.getItem("Lang"))
 
     function changelang(e){
@@ -46,12 +51,25 @@ function Header(props) {
 
    
 
-        }
-       
+        } 
+    }
+
+    function changecountry(e){
+        console.log(e)
+      
         
-     
+        if(e != localStorage.getItem("Country")){
+            localStorage.setItem("Country",e)
+            props.country(e)
+            console.log(e + "qweqweqw")
+        }
+      
+
+   
+
         
     }
+
 
     function fireLogin(){
         console.log(login)
@@ -96,14 +114,134 @@ function Header(props) {
 
     }
 
+    let langdataamerica = [["Argentinia","Espanol","ENG"],["Brasil","Portugês","ENG"],["Canada","English","ENG"],["Canada","Francais","ENG"],["Chile","Espanol","ENG"],["México","Espanol","ENG"],
+    ["Puerto Rico","Espanol","ENG"],["United States","English","ENG"],["Uruguay","Espanol","ENG"]
+]
+
+let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG"],["Belgien","Deutsch","GER"],["Belgium","English","ENG"],["Belique","Francais","ENG"],["Finland","English","ENG"],
+["France","Francais","ENG"],["Deutschland","Deutsch","GER"],["Nederland","Nederlands","ENG"],["Norway","English","ENG"],["United Kingdom","English","ENG"],["Schweiz","Deutsch","GER"]
+]
+
     function menu(){
         if(menu22){
             return(
                 <div className='langtogglemenu'>
-                    <button onClick={()=>{changelang("GER");setmenu22(false)}}><img src="https://shop.de.q-railing.com/content/files/images/languages/1031.gif"/> Deutsch(Deutschland)</button>
-                    <button onClick={()=>{changelang("ENG");setmenu22(false)}}><img src="https://shop.dk.q-railing.com/content/files/images/languages/2057.gif"/> English(GB)</button>
-                    <button onClick={()=>{changelang("ENG");setmenu22(false)}}><img src="https://shop.de.q-railing.com/content/files/images/languages/1036.gif"/> Francais(France)</button>
-                    <button onClick={()=>{changelang("GER");setmenu22(false)}}><img src="https://shop.de.q-railing.com/content/files/images/languages/1043.gif"/> Nederlands(Nederland)</button>
+                    <button id="closelangsel" onClick={()=>setmenu22(false)}>X</button>
+
+                    <div className='lang-button-wrapper'>
+                        <div className='lang-dev-wrap'>
+                        <h3>Africa</h3>
+                        <div className='lang-row'>
+                            <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("Egypt")}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>Egypt</h4>
+                                    <p>English</p>
+                                </div>
+                            </div>
+                            </button>
+                            <button onClick={()=>{changelang("ENG");setmenu22(false);changecountry("Marocco")}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>Marocco</h4>
+                                    <p>English</p>
+                                </div>
+                            </div>
+                            </button>
+                            <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("Maroc")}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>Maroc</h4>
+                                    <p>Francais</p>
+                                </div>
+                            </div>
+                            </button>
+                            <button onClick={()=>{changelang("ENG");setmenu22(false);changecountry("South Africa")}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>South Africa</h4>
+                                    <p>English</p>
+                                </div>
+                            </div>
+                            </button>
+                        </div>
+                        </div>
+                        <div className='lang-dev-wrap'>
+                        <h3>Americas</h3>
+                        <div className='lang-row'>
+                        {
+                        langdataamerica.map((statss, index) => (
+                            <button onClick={()=>{changelang(statss[2]);setmenu22(false);changecountry(statss[0])}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>{statss[0]}</h4>
+                                    <p>{statss[1]}</p>
+                                </div>
+                            </div>
+                            </button>
+                    
+                        ))}
+                        </div>
+                        </div>
+                        <div className='lang-dev-wrap'>
+                        <h3>Europe</h3>
+                        <div className='lang-row'>
+                        {
+                            langdataEurope.map((statss, index) => (
+                            <button onClick={()=>{changelang(statss[2]);setmenu22(false);changecountry(statss[0])}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>{statss[0]}</h4>
+                                    <p>{statss[1]}</p>
+                                </div>
+                            </div>
+                            </button>
+                    
+                        ))
+
+                        }
+                        </div>
+                        </div>
+                        <div className='lang-dev-wrap'>
+                        <h3>Middle East</h3>
+                        <div className='lang-row'>
+                        <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("Saudi Arabia")}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>Saudi Arabia</h4>
+                                    <p>English</p>
+                                </div>
+                            </div>
+                            </button>
+                            <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("United Arab Em.")}}>
+                            <div className='lang-card'>
+                                <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
+                                <div>
+                                    <h4>United Arab Em.</h4>
+                                    <p>English</p>
+                                </div>
+                            </div>
+                            </button>  
+                        </div>
+                        </div>
+                    </div>
+
+
+                   
+
+
+
+
+
+
+
                 </div>
             )
         }else{

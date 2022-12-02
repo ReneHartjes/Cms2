@@ -1,0 +1,10 @@
+.Systems-Wrapper{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.Systems-Wrapper img{
+    width: 100%;
+
+}
+

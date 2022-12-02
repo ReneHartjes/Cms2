@@ -108,33 +108,33 @@
     flex-direction: column;
 }
 
-.hiddenmenu{
-    display:none
-}
-.visiblemenu{
-    display:block;
-    position:absolute;
-    z-index: 100;
-    top: 30px;
-}
 
 .langtogglemenu{
     display: flex;
     flex-direction: column;
     position:absolute;
-    z-index: 100;
+    z-index: 1000;
     padding: 8px;
-    background-color: #ccc;
-    top: 30px;
-    width: 200px;
+    background-color: #fff;
+    top: 0px;
+    left:0px;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    float:left;
+    animation-name: comein;
+    animation-duration: 0.5s;
 
 }
-
+@keyframes comein {
+    from {top:1200px}
+    to {top:0px}
+  }
 .langtogglemenu button{
     display: flex;
     margin: 2px;
     padding:4px;
-    
+    text-align: left;
     background-color: transparent;
     border:none;
 }
@@ -144,4 +144,61 @@
 .langtogglemenu button:hover{
     cursor: pointer;
     opacity: 0.5;
+}
+.lang-dev-wrap {
+text-align: left;
+}
+
+.lang-dev-wrap h3{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-size: 22px;
+    
+}
+#closelangsel{
+    font-weight: 900;
+    font-size: 22px;
+    position: absolute;
+    right: 20px;
+    padding-left:12px;
+    padding-right: 12px;
+    border:2px solid black;
+    border-radius: 50%;
+}
+.lang-card img{
+    width: 32px;
+    height: 32px;
+
+}
+.lang-card h4{
+    font-size: 16px;
+}
+.lang-card{
+    display:flex;
+}
+.lang-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 30px
+}
+.lang-button-wrapper{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+#landingpage{
+    position: relative;
+    background-color: #fff;
+}
+
+.Landingpage-Text{
+    width: 80%;
+
+}
+.Landingpage-block{
+    z-index: 100;
+    margin-top: -100px;
+    background-color: #fff;
+    padding: 30px;
+   
 }
