@@ -20,7 +20,7 @@ function Mainpagetext(props) {
  
 
     async function fetchdata(infotextlang){
-        fetch('http://localhost:8080/text/maintext/'+infotextlang)
+        fetch('http://164.90.160.246:8080/text/maintext/'+infotextlang)
      
         .then(res=>res.json())
         .then(json=>setinfotext(json)).then(console.log(infotext))
