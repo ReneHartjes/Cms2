@@ -1,0 +1,14 @@
+.Banner-wrap{
+    display: flex;
+    justify-content: space-between;
+
+}
+.Banner-small1{
+
+    margin-left:10px;
+}
+
+.Banner-small2{
+    margin-top: 13px;
+    margin-left:10px;
+}

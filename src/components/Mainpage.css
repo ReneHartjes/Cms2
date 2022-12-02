@@ -1,0 +1,103 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.Header-wrap{
+    display:flex;
+    justify-content: center;
+    
+}
+.Header{
+    width: 1170px;
+}
+.Header a{
+    text-decoration: none;
+    color:black
+}
+.Header-top{
+    display:flex;
+    justify-content: space-between;
+}
+.Header-top div ul{
+    display: flex;
+}
+
+.Header-top div ul li{
+    margin: 5px;
+    list-style: none;
+}
+
+.Header-top div .Header-promise img{
+    width: 16px;
+    height: 16px;
+   margin-right: 10px;
+   margin-top:5px;
+}
+.Header-user-nav li {
+    border-right:1px solid #ccc;
+    padding-left:5px;
+    padding-right:5px;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/*header-mid*/
+
+.Header-mid{
+    display:flex;
+    align-items: center;
+}
+.Header-mid-search{
+    display: flex;
+    flex-basis: calc(100%);
+    justify-content: center;
+}
+.Header-mid-search input{
+    width: 55%;
+    height: 42px;
+}
+.Header-mid-search-results{
+    display:none
+}
+
+/*Header-Bottom*/
+.Header-bottom{
+    background-color: #f7f7f7;
+    height: 52px;
+    display:flex;
+    align-items: center;
+}
+
+.Header-bottom ul {
+    display: flex;
+    justify-content: left;
+    
+}
+.Header-bottom ul li{
+    margin: 10px;
+    list-style: none;
+
+}
+*{
+    padding:0px;
+    margin: 0px;
+    box-sizing:border-box;
+}
+.page{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-wrap{
+    max-width: 1170px;
+}
+
+
+.BannerWarp{
+    max-width: 1500px;
+}
