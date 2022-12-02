@@ -23,7 +23,7 @@ function Mainpage(props) {
     const langset = (message) => {
         setlang(message);
         props.lang(message)
-        localStorage.setItem("Lang",message)
+      
       };
     
   return (

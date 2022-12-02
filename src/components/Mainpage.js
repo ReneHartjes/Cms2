@@ -16,13 +16,13 @@ function Mainpage(props) {
     const params =  useParams()
     
     useEffect(()=>{
-        setlang(localStorage.getItem("Lang"))
+        setlang(lang = localStorage.getItem("Lang"))
       
     }, [lang])
 
     const langset = (message) => {
         setlang(message);
-        localStorage.setItem("Lang",message)
+
         props.lang(message)
       };
     

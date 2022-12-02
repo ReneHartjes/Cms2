@@ -4,7 +4,7 @@ import "./Header.css"
 function Header(props) {
 
     useEffect(()=>{
-        changelang("GER")
+    
       },[])
     const [passw, setpassw]= useState("")
     const [login, setlogin]= useState("")
@@ -49,7 +49,7 @@ function Header(props) {
         }
        
         
-        console.log(localStorage.getItem("Lang"))
+     
         
     }
 
