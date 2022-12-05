@@ -3,14 +3,11 @@ import "./Header.css"
 
 function Header(props) {
 
-    useEffect(()=>{
-    
-      },[])
     const [passw, setpassw]= useState("")
     const [login, setlogin]= useState("")
     const [menu22, setmenu22]= useState(false)
-    const [lang, setlang]= useState([])
-    const [langoption, setlangoption] = useState()
+    
+    const [langoption, setlangoption] = useState("eng")
     const [headwords, setheadwords] =useState([])
     const [country, setcountry] =useState()
     const [headwordsger, setheadwordsger] = useState([
@@ -22,53 +19,23 @@ function Header(props) {
         "Search","PRODUCTS", "SYSTEMS", "HIGHLIGHTS", "BESTSELLER", "%SALE", "Log out"
     ])
 
-
-    useEffect(() =>{
-        console.log(localStorage.getItem("Lang") + "awsedqwd")
-
-        if(localStorage.getItem("Lang") == "GER"){
-            setheadwords(headwordsger)
-        }
-        if(localStorage.getItem("Lang") == "ENG"){
-            setheadwords(headwordseng)
-         
-        }
-        if(localStorage.getItem("Country")){
-            setcountry(localStorage.getItem("Country"))
-         
-        }
-    },localStorage.getItem("Lang"))
+    useEffect(()=>{
+        if(props.language){
+        if(props.language.match("GER")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}}
+    },[])
 
     function changelang(e){
-        console.log(e)
-        if(e == "GER" || e == "ENG"){
-        
         if(e != localStorage.getItem("Lang")){
-            localStorage.setItem("Lang",e)
+            let splitarr = e.split("§§")
+            localStorage.setItem("Lang",splitarr[0])
+            localStorage.setItem("Country",splitarr[1])
             props.lang(e)
+            console.log("HeaderLang:"+e)
+            if(e.match("GER")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}
+           
         }
-      
-
-   
-
-        } 
     }
 
-    function changecountry(e){
-        console.log(e)
-      
-        
-        if(e != localStorage.getItem("Country")){
-            localStorage.setItem("Country",e)
-            props.country(e)
-            console.log(e + "qweqweqw")
-        }
-      
-
-   
-
-        
-    }
 
 
     function fireLogin(){
@@ -104,7 +71,7 @@ function Header(props) {
         }
     }
     function togglelangselect(){
-        console.log("aa")
+
         if(menu22 == true){
             setmenu22(false)
 
@@ -114,7 +81,7 @@ function Header(props) {
 
     }
 
-    let langdataamerica = [["Argentinia","Espanol","ENG"],["Brasil","Portugês","ENG"],["Canada","English","ENG"],["Canada","Francais","ENG"],["Chile","Espanol","ENG"],["México","Espanol","ENG"],
+let langdataamerica = [["Argentinia","Espanol","ENG"],["Brasil","Portugês","ENG"],["Canada","English","ENG"],["Canada","Francais","ENG"],["Chile","Espanol","ENG"],["México","Espanol","ENG"],
     ["Puerto Rico","Espanol","ENG"],["United States","English","ENG"],["Uruguay","Espanol","ENG"]
 ]
 
@@ -132,7 +99,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         <div className='lang-dev-wrap'>
                         <h3>Africa</h3>
                         <div className='lang-row'>
-                            <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("Egypt")}}>
+                            <button onClick={()=>{changelang("GER"+"§§"+"Egypt");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -141,7 +108,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("ENG");setmenu22(false);changecountry("Marocco")}}>
+                            <button onClick={()=>{changelang("ENG"+"§§"+"Marocco");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -150,7 +117,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("Maroc")}}>
+                            <button onClick={()=>{changelang("GER"+"§§"+"Maroc");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -159,7 +126,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("ENG");setmenu22(false);changecountry("South Africa")}}>
+                            <button onClick={()=>{changelang("ENG"+"§§"+"South Africa");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -175,7 +142,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         <div className='lang-row'>
                         {
                         langdataamerica.map((statss, index) => (
-                            <button onClick={()=>{changelang(statss[2]);setmenu22(false);changecountry(statss[0])}}>
+                            <button onClick={()=>{changelang(statss[2]+"§§"+statss[0]);setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -193,7 +160,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         <div className='lang-row'>
                         {
                             langdataEurope.map((statss, index) => (
-                            <button onClick={()=>{changelang(statss[2]);setmenu22(false);changecountry(statss[0])}}>
+                            <button onClick={()=>{changelang(statss[2]+"§§"+statss[0]);setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -211,7 +178,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         <div className='lang-dev-wrap'>
                         <h3>Middle East</h3>
                         <div className='lang-row'>
-                        <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("Saudi Arabia")}}>
+                        <button onClick={()=>{changelang("GER"+"§§"+"Saudi Arabia");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -220,7 +187,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("GER");setmenu22(false);changecountry("United Arab Em.")}}>
+                            <button onClick={()=>{changelang("GER"+"§§"+"UAE");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>

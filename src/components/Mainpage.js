@@ -14,38 +14,36 @@ import Footer from './includes/Footer';
 function Mainpage(props) {
     let [lang, setlang] = useState()
     let [count, setcount] = useState()
+    let [globallang, setgloballang] = useState("eng")
     const params =  useParams()
-    
-    useEffect(()=>{
-        setlang(lang = localStorage.getItem("Lang"))
-      
-    }, [lang])
+    let [language, setlanguage] = useState("eng")
 
     const langset = (message) => {
-        setlang(message);
+        let arr = message.split("§§")
+        console.log(arr[0]+ "+++++" + arr[1])
+        setlang(arr[0])
 
         props.lang(message)
       };
+      useEffect(()=>{    
+        setgloballang(props.language)
+        console.log("üüüü"+props.language)
+      },[])
 
-      const countset = (message) => {
-        setcount(message);
-        
-        props.country(message)
-      };
     
   return (
   <>
-    <Header country={countset}lang={langset}></Header>
+    <Header language={props.language} lang={langset}></Header>
     <div className='page'>
     <div className='BannerWarp'>
     <Banner></Banner>
     </div>
     <div className='page-wrap'>
-    <Mainpagetext lang={lang}></Mainpagetext>
-    <Bestseller lang={lang}></Bestseller>
+    <Mainpagetext language={props.language}></Mainpagetext>
+  
   </div>  
   </div>
-  <Footer></Footer>
+  <Footer language={props.language}></Footer>
   </>
     
   )

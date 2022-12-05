@@ -19,7 +19,7 @@ function Landingpagetemplate(props) {
     }, [lang, country])
     
     useEffect(()=>{
-        fetch('http://localhost:8080/landingpage/'+lang+'/EasyGlassSmart')
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=mainpagetext&filters[language][$eq]=ger')
         .then(res=>res.json())
         .then(json=>{setcontent(json);console.log(content)})
     },[])

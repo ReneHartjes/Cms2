@@ -11,23 +11,31 @@ import EasyGlassPrime from './components/landingpages/EasyGlassPrime';
 import { Langcontext } from './components/context/Langcontext';
 import Landingpagetemplate from './components/landingpages/Landingpagetemplate';
 import { useEffect, useState } from 'react';
-
 function App() {
   const [context, setcontext] = useState()
-  const [globallang, setgloballang] = useState()
-  const [globalcountry, setglobalcountry] = useState()
-
-  function setlang(langval){
-    setgloballang(langval)
-
-  }
-
-  function setcount(langval2){
-    setglobalcountry(langval2)
-    if(langval2){
-      console.log(langval2)
+  const [globallang, setgloballang] = useState("Eng")
+  const [globalcountry, setglobalcountry] = useState("United States")
+  if(localStorage.getItem("Lang")){
+    console.log("local:::"+localStorage.getItem("Lang"))
+    if(localStorage.getItem("Lang") != globallang){
+      setgloballang(localStorage.getItem("Lang"))
     }
   }
+  if(localStorage.getItem("Country")){
+    console.log("localCountry:::"+localStorage.getItem("Country"))
+    if(localStorage.getItem("Country") != globalcountry){
+      setglobalcountry(localStorage.getItem("Country"))
+    }
+  }
+  function setlang(langval){
+    console.log(langval + "*****APP")
+    let langsplit = langval.split("§§")
+    setgloballang(langsplit[0])
+    setglobalcountry(langval[1])
+
+  }
+
+
 
   return (
     <>
@@ -36,13 +44,13 @@ function App() {
     <Routes>
 
 
-    <Route path="/" element={<Mainpage country={setcount}lang={setlang}></Mainpage>} />
+    <Route path="/" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
     <Route path="/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
     
     <Route path="/systems/EasyGlassPrime" element={<EasyGlassPrime lang={setlang} language={globallang}></EasyGlassPrime>} />
-    <Route path="/products" element={<Systems></Systems>} />
+    <Route path="/products" element={<Systems lang={setlang} language={globallang}></Systems>} />
 
-    <Route path="/systems/EasyGlassSmart" element={<Landingpagetemplate country={setcount}lang={setlang} />} />
+    <Route path="/systems/EasyGlassSmart" element={<Landingpagetemplate lang={setlang} />} />
 
 
     </Routes>

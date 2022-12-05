@@ -5,35 +5,48 @@ import {useState, useEffect } from 'react'
 function Mainpagetext(props) {
 
     let [infotext, setinfotext] = useState({})
-    let [infotextlang, setinfotextlang] = useState("eng")
+    let [infotextlang, setinfotextlang] = useState("ger")
 
-    
+
     useEffect(()=>{
-        setinfotextlang(localStorage.getItem("Lang"))
-        if(props.lang){
-            setinfotextlang(props.lang)
-        
-            fetchdata(props.lang)
-        }
-      
-    }, [props.lang])
- 
+      fetchdata(props.language)
+    },[props.language])
 
-    async function fetchdata(infotextlang){
-        fetch('http://localhost:8080/text/maintext/'+infotextlang)
-     
+
+    async function fetchdata(ee){
+        console.log("____"+ee.toLowerCase())
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=mainpagetext&filters[language][$eq]='+ee.toLowerCase())
         .then(res=>res.json())
-        .then(json=>setinfotext(json)).then(console.log(infotext))
+        .then(json=>setinfotext(json)).then(console.log(infotext.data[0].attributes)).then(()=>lollol())
+    }
+
+    function lollol(){
+      if(infotext.data){
+        return(
+          <>
+          <h2>{infotext.data[0].attributes.title}</h2>
+        <br />
+        <p>{infotext.data[0].attributes.text1}</p>
+        <br />
+       <p>{infotext.data[0].attributes.text2}</p> 
+      
+          </>
+        )
+      }else{
+        console.log(infotext)
+        return(
+          <>
+          <h1>fetching</h1>
+          </>
+        )
+      }
     }
     
   return (
     <div className='Mainpagetext-wrap'>
-        <h2>{infotext[0]}</h2>
-        <br />
-        <p>{infotext[1]}</p>
-        <br />
-       <p>{infotext[2]}</p> 
-      
+      {lollol()}
+
+     
     </div>
   )
 }

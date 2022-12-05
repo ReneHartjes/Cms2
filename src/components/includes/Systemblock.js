@@ -8,18 +8,18 @@ function Systemblock(props) {
     let [page, setpage] = useState(1)
 
     useEffect(()=>{
-        fetch('http://localhost:8080/systems/page'+page)
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=mainpagetext&filters[language][$eq]=ger')
         .then(res=>res.json())
-        .then(json=>{setsystemarr(json);loadcontent()})
+        .then(json=>{loadcontent()})
     },[page])
 
 
     async function loadmore(){
         console.log(page)
         setpage(page+1)
-        fetch('http://localhost:8080/systems/page'+page)
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=mainpagetext&filters[language][$eq]=ger')
         .then(res=>res.json())
-        .then(json=>{setsystemarr2(json);loadcontent()})
+        .then(json=>{loadcontent()})
     }
 
     function loadcontent(){
