@@ -2,35 +2,42 @@
     background-color: #333;
     color:white;
     display: flex;
+ 
     justify-content: center;
 }
-.Footer-mid div ul{
+
+.Footer-top{
     display: flex;
 }
-.Footer-mid{
-    padding-top: 20px;
-}
-.Footer-inner{
-    width: 1170px;
-}
-.Footer-bot{
-    padding-bottom: 20px;
-}
-.Footer-wrap ul li{
-    list-style: none;
-    min-width: 90px;
-}
-
-.Footer-bot{
+.Footer-Links{
+    flex-basis: 50%;
     display: flex;
     justify-content: space-between;
-}
-
-.Footer-bot ul{
-    display:flex;
 
 }
+.Footer-Links a, .Footer-Address a{
+      text-decoration: none;
+      color:White;
+      font-size: 20px;
+}
+.Footer-Links li, .Footer-Address li{
+    min-width: 200px;
+    list-style: none;
+}
+.Footer-Address{
+    flex-basis: 50%;
+    display: flex;
+    justify-content: right;
+}
+#footerlogo{
+ 
 
-.Footer-bot ul li{
-    min-width: 100px;
+    margin-bottom: 30px;
+}
+
+.Footer-inner{
+    padding: 100px 40px 60px;
+    max-width: 1420px;
+    width: 100%;
+    
 }
