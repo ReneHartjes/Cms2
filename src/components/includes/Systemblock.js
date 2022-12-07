@@ -29,7 +29,13 @@ function Systemblock(props) {
    function rerenderprods(attrib, idd){
     console.log(savesearch+ "+++" + attrib)
     if(document.getElementById(idd).checked){
-      console.log("ckeche")
+     let syss = document.querySelectorAll(".container")
+
+     syss.forEach(element => {
+        if(element.children[0].checked && element.children[0].id != idd){
+          element.children[0].checked = false
+        }
+     });
     
     fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+attrib)
     .then(res=>res.json())
