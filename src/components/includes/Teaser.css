@@ -1,0 +1,66 @@
+.Teaser-wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.Teaser-card{
+    position: relative;
+}
+
+.Teaser-card img{
+    max-width: 100%;
+    width: 100%;
+}
+
+.Teaser-text{
+    position: absolute;
+    z-index: 10;
+    display: flex;
+
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    top:0px;
+    height: 100%;
+}
+
+.Teaser-text div{
+    color:white;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
+    margin-top:50px;
+    width: 50%;
+    padding: 80px 20px 80px 20px;
+    border-radius: 10px;
+
+    position: relative;
+}
+
+.Teaser-text div h3{
+    font-size: 30px;
+    position: absolute;
+  
+    top: 30px;
+    margin-bottom: 20px;
+}
+
+.Teaser-text div button{
+    background-color: #005094;
+    padding: 6px 10px 6px 10px;
+    color: white;
+    max-width: 150px;
+    font-size: 16px;
+    border: 1px solid darkblue;
+    margin-top: 10px;
+    border-radius: 10px;
+
+}
+
+.Teaser-text div button:hover{
+    opacity: 0.9;
+    transform: scale(1.1);
+    cursor: pointer;
+}

@@ -10,14 +10,14 @@ let valarr = [];
 let valarr2 = [];
 let valarr3 = [];
 useEffect(()=>{
-  console.log("prefetch:"+"ger")
+
   fetcher()
 
 },[])
 
 
   useEffect(()=>{
-    console.log("prefetch:"+props.language)
+
     fetcher()
 
   },[props.language])
@@ -26,11 +26,11 @@ useEffect(()=>{
     if(props.language){
     fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=footer&filters[language][$eq]='+props.language.toLowerCase())
     .then(res=>res.json())
-    .then(json=>setlangstate(json)).then(console.log(langstate)).then(()=>footerrender())}
+    .then(json=>setlangstate(json)).then(()=>footerrender())}
     else{
       fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=footer&filters[language][$eq]=ger')
       .then(res=>res.json())
-      .then(json=>setlangstate(json)).then(console.log(langstate)).then(()=>footerrender()).then(()=> footrenderaddr())
+      .then(json=>setlangstate(json)).then(()=>footerrender()).then(()=> footrenderaddr())
     }
   }
 
@@ -40,7 +40,7 @@ useEffect(()=>{
     
 
     if(langstate){
-      console.log(langstate)
+ 
       let data1 = langstate.data[0].attributes.text1.split("§§")
       let data2 = langstate.data[0].attributes.text2.split("§§")
       let data3 = langstate.data[0].attributes.attributes.split("§§")
@@ -92,8 +92,7 @@ useEffect(()=>{
   }
 
   function footrenderprods(){
-    console.log("called")
-    console.log(valarr3)
+
     return(
       <ul id="Footer-block2">
       {

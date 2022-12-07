@@ -11,24 +11,25 @@ import EasyGlassPrime from './components/landingpages/EasyGlassPrime';
 import { Langcontext } from './components/context/Langcontext';
 import Landingpagetemplate from './components/landingpages/Landingpagetemplate';
 import { useEffect, useState } from 'react';
+import Productpage from './components/Productpage';
 function App() {
   const [context, setcontext] = useState()
   const [globallang, setgloballang] = useState("Eng")
   const [globalcountry, setglobalcountry] = useState("United States")
   if(localStorage.getItem("Lang")){
-    console.log("local:::"+localStorage.getItem("Lang"))
+
     if(localStorage.getItem("Lang") != globallang){
       setgloballang(localStorage.getItem("Lang"))
     }
   }
   if(localStorage.getItem("Country")){
-    console.log("localCountry:::"+localStorage.getItem("Country"))
+
     if(localStorage.getItem("Country") != globalcountry){
       setglobalcountry(localStorage.getItem("Country"))
     }
   }
   function setlang(langval){
-    console.log(langval + "*****APP")
+
     let langsplit = langval.split("§§")
     setgloballang(langsplit[0])
     setglobalcountry(langval[1])
@@ -46,13 +47,14 @@ function App() {
 
     <Route path="/" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
     <Route path="/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
-    
+    <Route path="/:count/products/:artid" element={<Productpage lang={setlang} language={globallang}></Productpage>} />
     <Route path="/systems/EasyGlassPrime" element={<EasyGlassPrime lang={setlang} language={globallang}></EasyGlassPrime>} />
     <Route path="/products" element={<Systems lang={setlang} language={globallang}></Systems>} />
 
     <Route path="/systems/EasyGlassSmart" element={<Landingpagetemplate lang={setlang} />} />
 
-
+    <Route path="/:count" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
+    <Route path="/:count/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
     </Routes>
     
     </Langcontext.Provider>

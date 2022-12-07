@@ -53,15 +53,22 @@
     display: flex;
     flex-basis: calc(100%);
     justify-content: center;
+    position: relative;
 }
 .Header-mid-search input{
     width: 55%;
     height: 42px;
 }
-.Header-mid-search-results{
-    display:none
-}
+.search-suggest{
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -46px;
+    background-color: #fff;
+    width: 55%;
+    border: 1px solid #ccc;
+    
 
+}
 /*Header-Bottom*/
 .Header-bottom{
     background-color: #f7f7f7;
@@ -169,6 +176,10 @@ text-align: left;
     width: 32px;
     height: 32px;
 
+}
+
+.search-suggest{
+    display:none;
 }
 .lang-card h4{
     font-size: 16px;

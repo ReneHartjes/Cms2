@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import "./Header.css"
 
 function Header(props) {
@@ -6,7 +7,8 @@ function Header(props) {
     const [passw, setpassw]= useState("")
     const [login, setlogin]= useState("")
     const [menu22, setmenu22]= useState(false)
-    
+    const [searchres, setsearchres] = useState()
+    const [searchresarr, setsearchresarr] = useState([])
     const [langoption, setlangoption] = useState("eng")
     const [headwords, setheadwords] =useState([])
     const [country, setcountry] =useState()
@@ -30,16 +32,58 @@ function Header(props) {
             localStorage.setItem("Lang",splitarr[0])
             localStorage.setItem("Country",splitarr[1])
             props.lang(e)
-            console.log("HeaderLang:"+e)
+         
             if(e.match("GER")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}
-           
+            window.location.replace("/"+splitarr[0]+"-"+splitarr[1])
+        }
+    }
+    const params =  useParams()
+    
+    const Searching = (event) => {
+        const searchWord = event.target.value;
+
+
+        if(searchWord.length >= 4){
+            fetch('https://squid-app-9h43v.ondigitalocean.app/api/products?filters[description][$contains]='+searchWord)
+            .then(res=>res.json())
+            .then(json=>{setsearchres(json)}).then(()=>renderSuggest())
+        }
+
+    }
+
+    function renderSuggest(){
+
+
+        if(!searchres){
+            return(
+                <>
+                </>
+            )
+        }else{
+           try{
+            return(
+                <>
+              
+              {
+             searchres.data.map((statss, index) => (
+              <li> 
+                <a href={'/'+params.count+'/products/'+statss.attributes.artid}>{statss.attributes.title}</a>
+              </li>
+          
+             ))}
+
+                </>
+            )}catch{
+
+            }
         }
     }
 
+  
 
 
     function fireLogin(){
-        console.log(login)
+
         localStorage.setItem("User", login)
         window.location.reload()
     }
@@ -51,7 +95,7 @@ function Header(props) {
 
     function loginstate(){
         if(localStorage.getItem("User")){
-            console.log(localStorage.getItem("User"))
+
             return(
                 <>
                 <h3>hello {localStorage.getItem("User")}</h3>
@@ -219,9 +263,19 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
     }
 
 
+    let systemurl;
+    let mainpageurl;
 
+    if(params.count){
+        systemurl = "/"+params.count+"/systems"
+        mainpageurl = "/"+params.count
+    }else{
+        systemurl ="/systems"
+        mainpageurl = "/"
+    }   
 
   return (
+   
     <div className='Header-wrap'>
     <div className='Header'>
         <div className='Header-top'>
@@ -240,15 +294,18 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
         </div>
         <div className='Header-mid'>
             <div>
-            <a href="/"><img src='https://shop.de.q-railing.com/content/files/content/logo-q-railing.png'/></a>
+            <a href={mainpageurl}><img src='https://shop.de.q-railing.com/content/files/content/logo-q-railing.png'/></a>
             </div>
             <div className='Header-mid-search'>
-                <input type="text"/><button>{headwords[8]}</button>
+                <input on onFocus={()=>{document.querySelector(".search-suggest").style ="display:block;"}} onChange={Searching} type="text"/><button>{headwords[8]}</button>
+                <div className='search-suggest'>
+                    {renderSuggest()}
+                </div>
             </div>
             <div id="Header-mid-search-results"></div>
         </div>
         <div className='Header-bottom'>
-            <ul><li><a href="/products">{headwords[9]}</a></li><li ><a href="/systems">{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li>{headwords[13]}</li></ul>
+            <ul><li><a href={systemurl}>{headwords[9]}</a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li>{headwords[13]}</li></ul>
         </div>
     </div>
     </div>

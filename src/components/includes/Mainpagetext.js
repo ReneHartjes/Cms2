@@ -14,10 +14,10 @@ function Mainpagetext(props) {
 
 
     async function fetchdata(ee){
-        console.log("____"+ee.toLowerCase())
+    
         fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[systemtitel][$eq]=mainpagetext&filters[language][$eq]='+ee.toLowerCase())
         .then(res=>res.json())
-        .then(json=>setinfotext(json)).then(console.log(infotext.data[0].attributes)).then(()=>lollol())
+        .then(json=>setinfotext(json)).then(()=>lollol())
     }
 
     function lollol(){
@@ -33,7 +33,7 @@ function Mainpagetext(props) {
           </>
         )
       }else{
-        console.log(infotext)
+  
         return(
           <>
           <h1>fetching</h1>

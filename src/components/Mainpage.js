@@ -9,6 +9,7 @@ import Banner from './includes/Banner';
 import Mainpagetext from './includes/Mainpagetext';
 import Bestseller from './includes/Bestseller';
 import Footer from './includes/Footer';
+import Teaser from './includes/Teaser';
 
 
 function Mainpage(props) {
@@ -17,17 +18,18 @@ function Mainpage(props) {
     let [globallang, setgloballang] = useState("eng")
     const params =  useParams()
     let [language, setlanguage] = useState("eng")
+    const Paraaa = useParams()
 
     const langset = (message) => {
         let arr = message.split("§§")
-        console.log(arr[0]+ "+++++" + arr[1])
+
         setlang(arr[0])
 
         props.lang(message)
       };
       useEffect(()=>{    
         setgloballang(props.language)
-        console.log("üüüü"+props.language)
+
       },[])
 
     
@@ -40,6 +42,7 @@ function Mainpage(props) {
     </div>
     <div className='page-wrap'>
     <Mainpagetext language={props.language}></Mainpagetext>
+    <Teaser language={props.language}/>
   
   </div>  
   </div>

@@ -21,14 +21,14 @@ function Systems(props) {
 
   const langset = (message) => {
       let arr = message.split("§§")
-      console.log(arr[0]+ "+++++" + arr[1])
+
       setlang(arr[0])
 
       props.lang(message)
     };
     useEffect(()=>{    
       setgloballang(props.language)
-      console.log("üüüü"+props.language)
+      
     },[])
 
 
@@ -42,7 +42,7 @@ function Systems(props) {
     
     </div>
     <div className='page-wrap'>
-    <Systemblock lange = {props.language}></Systemblock>
+    <Systemblock language = {props.language}></Systemblock>
   </div>  
   </div>
   <Footer></Footer>
