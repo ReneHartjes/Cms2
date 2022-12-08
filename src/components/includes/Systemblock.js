@@ -4,18 +4,23 @@ import './Systemblock.css'
 function Systemblock(props) {
 
     let [systemarr, setsystemarr] = useState({data:[]})
-    let [systemarr2, setsystemarr2] = useState([])
+    let [systemarr2, setsystemarr2] = useState({data:[]})
     let [savesearch , setsavesearch] = useState()
-    let [selectval, setselectval] = useState()
+    let [selectval, setselectval] = useState([])
+    let [filter1, setfilter1] = useState("")
+    let [filter2, setfilter2] = useState("")
+    let [filter3, setfilter3] = useState("")
+    let [filter4, setfilter4] = useState("")
+    let [filter5, setfilter5] = useState("")
+    
     let arr = []
-
-    let [page, setpage] = useState(1)
+    let attrs= []
 
 
     useEffect(()=>{
         fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
         .then(res=>res.json())
-        .then(json=>setsystemarr(json))
+        .then(json=>{setsystemarr(json); setsystemarr2(json)})
 
     },[])
 
@@ -26,88 +31,52 @@ function Systemblock(props) {
       
     }
 
-
-   function rerenderprods(attrib, idd){
-    console.log(savesearch+ "+++" + attrib)
-    if(document.getElementById(idd).checked){
-     let syss = document.querySelectorAll(".container")
-
-     syss.forEach(element => {
-        if(element.children[0].checked && element.children[0].id != idd){
-          element.children[0].checked = false
-        }
-     });
-     setsavesearch(attrib)
-
-     let url;
-
-     if(selectval)
-     {url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+attrib+'&filters[titel][$contains]='+selectval+'`'
-     }
-     else{
-       url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+attrib
-     }
-    fetch(url)
-    .then(res=>res.json())
-    .then(json=>setsystemarr(json))
-    .then(console.log(systemarr))}
-    else{
-
-     if(!selectval){
-      setsavesearch("")
-      rendernormal()
-    }else{
-      renderselect(selectval)
-    }
-    }
-   }
-
-   
    function rerenderprods2(attrib, idd){
-    console.log(savesearch+ "+++" + attrib)
+
     if(document.getElementById(idd).checked){
-     let syss = document.querySelectorAll(".container")
+      let matches = 0;
+ 
+   
 
-     syss.forEach(element => {
-        if(element.children[0].checked && element.children[0].id != idd){
-          element.children[0].checked = false
-        }
-     });
-     setsavesearch(attrib)
+      setfilter1([...filter1,attrib])
+      arr = systemarr.data.filter(function(item){
+        return  item.attributes.filter.includes(attrib)       
+       })
+
+
+     let val = {data:arr}
+
+     setsystemarr(val)
     }
-     console.log(systemarr)
-     if(document.getElementById(idd).checked){
-     let arr = systemarr.data.filter(function(item){
-      console.log(item.attributes.filter.match(attrib)       )
-      return  item.attributes.filter.includes(attrib)       
-  })
+     else{
+      uncheck(attrib, idd)
+     
 
+     }
+   }
+
+   function uncheck(attrib, id){
+
+    let items = document.querySelectorAll(".container")
+    let arr;
+    items.forEach(element => {
+      if(element.children[0].checked){
+        arr = systemarr2.data.filter(function(item){
+          return  item.attributes.filter.includes(element.children[0].id)       
+         })
+         console.log(arr)
+      }
+    });
     let val = {data:arr}
-    console.log(val)
-    setsystemarr(val)}else{
-      rendernormal()
-    }
-   }
-
-
-
-
-
-   function renderselect(e){
-    let url
-    if(savesearch)
-    {url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+e+'&filters[titel][$contains]='+savesearch+'`'
-    }
+    if(arr){
+    setsystemarr(val)}
     else{
-      url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+e
+      setsystemarr(systemarr2)
     }
-    setselectval(e)
-    console.log(url)
-    fetch(url)
-    .then(res=>res.json())
-    .then(json=>setsystemarr(json))
-    .then(console.log(systemarr))
+
    }
+
+
   return (
     <>
     <div>Systemblock</div>
