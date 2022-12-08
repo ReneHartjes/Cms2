@@ -1,8 +1,9 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Lato', sans-serif;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap');
 .Header-wrap{
     display:flex;
     justify-content: center;
@@ -58,6 +59,7 @@
 .Header-mid-search input{
     width: 55%;
     height: 42px;
+
 }
 .search-suggest{
     position: absolute;
@@ -85,8 +87,12 @@
 .Header-bottom ul li{
     margin: 10px;
     list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
 
 }
+
 .loginpopup{
     display:none
 }
@@ -108,7 +114,7 @@
     padding: 7px;
     display: block;
     position: absolute;
-    top: 20px;
+    top: 80px;
     background-color: #ccc;
     color:black;
     display: flex;
@@ -212,4 +218,44 @@ text-align: left;
     background-color: #fff;
     padding: 30px;
    
+}
+
+.Langselect{
+    border: none;
+    background-color: transparent;
+    display:flex
+}
+.Langselect span{
+    font-size: 18px;
+    margin-top:7px;
+    margin-left:7px
+}
+.Langselect:hover{
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.Header-usermenu ul{
+    display:flex;
+}
+
+.Header-usermenu ul li{
+    margin: 10px;
+    border:none;
+}
+.Header-logo{
+    width: 200px;
+}
+
+#search{
+    background-color: #005094;
+    width: 42px;
+    height: 42px;
+}
+
+#search img{
+    width: 80%;
+    height: 80%;
 }

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import "./Header.css"
+import globe from '../icons/globe.png'
+import lupe from '../icons/LupeWeiss.png'
+import home from '../icons/home.png'
 
 function Header(props) {
 
@@ -279,33 +282,32 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
     <div className='Header-wrap'>
     <div className='Header'>
         <div className='Header-top'>
-           <div> <ul className='Header-promise'><li><img width="16" height="16" src="https://shop.de.q-railing.com/content/files/images/usp_1.png" />{headwords[0]}</li>
-           <li><img width="16" height="16" src="https://shop.de.q-railing.com/content/files/images/usp_1.png" />{headwords[1]}</li>
-           <li><img width="16" height="16" src="https://shop.de.q-railing.com/content/files/images/usp_1.png" />{headwords[2]}</li>
-           <li><img width="16" height="16" src="https://shop.de.q-railing.com/content/files/images/usp_1.png" />{headwords[3]}</li>
-           </ul></div>
-           <div> <ul className='Header-user-nav'>
-            <li>
-            <button onClick={()=>togglelangselect()}>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYt_pU8wAiTPl5ffMcgcwNj7854hN17HZntw&usqp=CAU" width="16" height="16"/>
-            </button>
-            {menu()}
-            </li><li>{headwords[4]}</li><li id="logintab"><img src="https://static.vecteezy.com/system/resources/thumbnails/007/033/146/small/profile-icon-login-head-icon-vector.jpg" width="16" height="16"/>{loginstate()}</li><li></li></ul></div>
+
+
         </div>
         <div className='Header-mid'>
-            <div>
-            <a href={mainpageurl}><img src='https://shop.de.q-railing.com/content/files/content/logo-q-railing.png'/></a>
+            <div className='Header-logo'>
+            <a href={mainpageurl}><img src='https://www.q-railing.com/files/2200076-qr-instagram-320x320.jpg' width="101"/></a>
             </div>
             <div className='Header-mid-search'>
-                <input on onFocus={()=>{document.querySelector(".search-suggest").style ="display:block;"}} onChange={Searching} type="text"/><button>{headwords[8]}</button>
+                <input on onFocus={()=>{document.querySelector(".search-suggest").style ="display:block;"}} onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
                 <div className='search-suggest'>
                     {renderSuggest()}
                 </div>
             </div>
-            <div id="Header-mid-search-results"></div>
+            <div className='Header-usermenu'> 
+            <ul className='Header-user-nav'>
+            <li>
+            <button className='Langselect' onClick={()=>togglelangselect()}>
+            <img src={globe} width="32" height="32"/> <span>{props.language}</span>
+            </button>
+            {menu()}
+            </li><li id="logintab"><img src="https://static.vecteezy.com/system/resources/thumbnails/007/033/146/small/profile-icon-login-head-icon-vector.jpg" width="32" height="32"/>{loginstate()}</li>
+            </ul>
+            </div>
         </div>
         <div className='Header-bottom'>
-            <ul><li><a href={systemurl}>{headwords[9]}</a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li>{headwords[13]}</li></ul>
+            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li>{headwords[13]}</li></ul>
         </div>
     </div>
     </div>

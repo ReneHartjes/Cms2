@@ -6,23 +6,24 @@ function Systemblock(props) {
     let [systemarr, setsystemarr] = useState({data:[]})
     let [systemarr2, setsystemarr2] = useState([])
     let [savesearch , setsavesearch] = useState()
+    let [selectval, setselectval] = useState()
     let arr = []
 
     let [page, setpage] = useState(1)
-    console.log('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
+
 
     useEffect(()=>{
         fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
         .then(res=>res.json())
         .then(json=>setsystemarr(json))
-        .then(console.log(systemarr))
+
     },[])
 
     function rendernormal(){
       fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
       .then(res=>res.json())
       .then(json=>setsystemarr(json))
-      .then(console.log(systemarr))
+      
     }
 
 
@@ -36,18 +37,77 @@ function Systemblock(props) {
           element.children[0].checked = false
         }
      });
-    
-    fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+attrib)
+     setsavesearch(attrib)
+
+     let url;
+
+     if(selectval)
+     {url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+attrib+'&filters[titel][$contains]='+selectval+'`'
+     }
+     else{
+       url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+attrib
+     }
+    fetch(url)
     .then(res=>res.json())
     .then(json=>setsystemarr(json))
     .then(console.log(systemarr))}
     else{
-     
-      rendernormal()
+
+     if(!selectval){
       setsavesearch("")
+      rendernormal()
+    }else{
+      renderselect(selectval)
+    }
     }
    }
 
+   
+   function rerenderprods2(attrib, idd){
+    console.log(savesearch+ "+++" + attrib)
+    if(document.getElementById(idd).checked){
+     let syss = document.querySelectorAll(".container")
+
+     syss.forEach(element => {
+        if(element.children[0].checked && element.children[0].id != idd){
+          element.children[0].checked = false
+        }
+     });
+     setsavesearch(attrib)
+    }
+     console.log(systemarr)
+     if(document.getElementById(idd).checked){
+     let arr = systemarr.data.filter(function(item){
+      console.log(item.attributes.filter.match(attrib)       )
+      return  item.attributes.filter.includes(attrib)       
+  })
+
+    let val = {data:arr}
+    console.log(val)
+    setsystemarr(val)}else{
+      rendernormal()
+    }
+   }
+
+
+
+
+
+   function renderselect(e){
+    let url
+    if(savesearch)
+    {url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+e+'&filters[titel][$contains]='+savesearch+'`'
+    }
+    else{
+      url = 'https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$contains]='+e
+    }
+    setselectval(e)
+    console.log(url)
+    fetch(url)
+    .then(res=>res.json())
+    .then(json=>setsystemarr(json))
+    .then(console.log(systemarr))
+   }
   return (
     <>
     <div>Systemblock</div>
@@ -56,17 +116,26 @@ function Systemblock(props) {
     <div className='System-Filter'>
       <h3>Filter:</h3>
       <div className='System-Filter-Block'>
-        <h3>Material</h3>
+        <h3>Geländertyp: </h3>
+        <br />
+       
 
         <label class="container">
-  <input id="glass" type="checkbox" onChange={()=>rerenderprods("Glass", "glass")}  />
-  <span class="checkmark"></span> Glass
+  <input id="ganzglass" type="checkbox" onChange={()=>rerenderprods2("ganzglass", "ganzglass")}  />
+  <span class="checkmark"></span> Ganzglasgeländer
 </label>
 
 <label class="container">
-  <input id="alu" type="checkbox" onChange={()=>rerenderprods("Alu", "alu")}  />
-  <span class="checkmark"></span> Aluminium
+  <input id="pfosten" type="checkbox" onChange={()=>rerenderprods2("pfosten", "pfosten")}  />
+  <span class="checkmark"></span> Pfostengeländer
 </label>
+
+      </div>
+
+
+      <div className='System-Filter-Block'>
+  
+
 
       </div>
       
