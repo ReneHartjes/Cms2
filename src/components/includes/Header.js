@@ -11,9 +11,12 @@ function Header(props) {
     const [login, setlogin]= useState("")
     const [menu22, setmenu22]= useState(false)
     const [searchres, setsearchres] = useState()
+    const [searchresdocs, setsearchresdocs] = useState({data:[]})
     const [searchresarr, setsearchresarr] = useState([])
     const [langoption, setlangoption] = useState("eng")
     const [headwords, setheadwords] =useState([])
+    const [Productword, setProductword] =useState("")
+    let [Docsword, setDocsword] =useState("")
     const [country, setcountry] =useState()
     const [headwordsger, setheadwordsger] = useState([
         "Große Auswahl", "Schnelle Lieferung","Höchste Qualität", "Maximale Sicherheit","Fragen?Rufen Sie uns am:02822-915-69-0", "Benutzername", "Passwort", "Anmelden",
@@ -44,37 +47,66 @@ function Header(props) {
     
     const Searching = (event) => {
         const searchWord = event.target.value;
-
-
-        if(searchWord.length >= 4){
+        if(searchWord.length >= 3){
             fetch('https://squid-app-9h43v.ondigitalocean.app/api/products?filters[description][$contains]='+searchWord)
             .then(res=>res.json())
             .then(json=>{setsearchres(json)}).then(()=>renderSuggest())
+
+            fetch('https://squid-app-9h43v.ondigitalocean.app/api/documents?filters[title][$contains]='+searchWord)
+            .then(res=>res.json())
+            .then(json=>{setsearchresdocs(json)}).then(()=>renderDocs())
         }
 
     }
 
-    function renderSuggest(){
 
+    function setDocword(){
+        if(searchresdocs.data.length > 0 ){
+            return(
+                <h2>Documents</h2>
+            )
+        }else{
+            return(
+                <></>
+            )
+        }
+    }
 
-        if(!searchres){
+    
+    function setProdword(){
+        if(searchres.data.length > 0 ){
+            return(
+                <h2>Products</h2>
+            )
+        }else{
+            return(
+                <></>
+            )
+        }
+    }
+
+    function renderDocs(){
+        console.log(searchresdocs)
+        if(!searchresdocs){
             return(
                 <>
                 </>
             )
         }else{
+
            try{
             return(
                 <>
-              
+               <h2 id='docs'>{setDocword()}</h2>
+               <ul className='Search-Docs-list'>
               {
-             searchres.data.map((statss, index) => (
-              <li> 
-                <a href={'/'+params.count+'/products/'+statss.attributes.artid}>{statss.attributes.title}</a>
+             searchresdocs.data.map((statss, index) => (
+              <li className='Search-Documents'> 
+                <a href={statss.attributes.free1}><img src="https://as1.ftcdn.net/v2/jpg/04/17/28/20/1000_F_417282083_X0pybvfs7bqvoNjDOjM3iDklGJ3lTU4q.jpg" width="80"/>{statss.attributes.title}.pdf</a>
               </li>
           
              ))}
-
+                </ul>
                 </>
             )}catch{
 
@@ -82,11 +114,44 @@ function Header(props) {
         }
     }
 
-  
 
+    function renderSuggest(){
+        console.log(searchres)
+        if(!searchres){
+            return(
+                <>
+                </>
+            )
+        }else{
+            
+           try{
+            return(
+                <>
+              <h2 id='prods'>{setProdword()}</h2>
+              <ul className='Search-Product-list'>
+              {
+             searchres.data.map((statss, index) => (
+              <li className='Search-Products'> 
+              <a href={'/'+params.count+'/products/'+statss.attributes.artid}>
+              
+                
+                <img src={statss.attributes.imgurl} width="80"/>
+              
+              
+                {statss.attributes.title}</a>
+               
+              </li>
+          
+             ))}
+                </ul>
+                </>
+            )}catch{
+
+            }
+        }
+    }
 
     function fireLogin(){
-
         localStorage.setItem("User", login)
         window.location.reload()
     }
@@ -117,15 +182,14 @@ function Header(props) {
             )
         }
     }
-    function togglelangselect(){
 
+    function togglelangselect(){
         if(menu22 == true){
             setmenu22(false)
 
         }else{
             setmenu22(true)
         }
-
     }
 
 let langdataamerica = [["Argentinia","Espanol","ENG"],["Brasil","Portugês","ENG"],["Canada","English","ENG"],["Canada","Francais","ENG"],["Chile","Espanol","ENG"],["México","Espanol","ENG"],
@@ -141,7 +205,6 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
             return(
                 <div className='langtogglemenu'>
                     <button id="closelangsel" onClick={()=>setmenu22(false)}>X</button>
-
                     <div className='lang-button-wrapper'>
                         <div className='lang-dev-wrap'>
                         <h3>Africa</h3>
@@ -198,7 +261,6 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                    
                         ))}
                         </div>
                         </div>
@@ -218,7 +280,6 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                             </button>
                     
                         ))
-
                         }
                         </div>
                         </div>
@@ -246,16 +307,6 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         </div>
                         </div>
                     </div>
-
-
-                   
-
-
-
-
-
-
-
                 </div>
             )
         }else{
@@ -265,7 +316,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
         }
     }
 
-
+/*Prep Url Params*/
     let systemurl;
     let mainpageurl;
 
@@ -293,6 +344,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                 <input on onFocus={()=>{document.querySelector(".search-suggest").style ="display:block;"}} onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
                 <div className='search-suggest'>
                     {renderSuggest()}
+                    {renderDocs()}
                 </div>
             </div>
             <div className='Header-usermenu'> 

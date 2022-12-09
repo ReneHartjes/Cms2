@@ -6,8 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap');
 .Header-wrap{
     display:flex;
-    justify-content: center;
-    
+    justify-content: center;  
 }
 .Header{
     width: 1170px;
@@ -23,12 +22,10 @@
 .Header-top div ul{
     display: flex;
 }
-
 .Header-top div ul li{
     margin: 5px;
     list-style: none;
 }
-
 .Header-top div .Header-promise img{
     width: 16px;
     height: 16px;
@@ -43,7 +40,6 @@
     justify-content: center;
     text-align: center;
 }
-
 /*header-mid*/
 
 .Header-mid{
@@ -92,7 +88,6 @@
     font-size: 18px;
 
 }
-
 .loginpopup{
     display:none
 }
@@ -120,8 +115,6 @@
     display: flex;
     flex-direction: column;
 }
-
-
 .langtogglemenu{
     display: flex;
     flex-direction: column;
@@ -183,7 +176,6 @@ text-align: left;
     height: 32px;
 
 }
-
 .search-suggest{
     display:none;
 }
@@ -202,24 +194,19 @@ text-align: left;
     max-width: 1170px;
     margin: 0 auto;
 }
-
 #landingpage{
     position: relative;
     background-color: #fff;
 }
-
 .Landingpage-Text{
     width: 80%;
-
 }
 .Landingpage-block{
     z-index: 100;
     margin-top: -100px;
     background-color: #fff;
-    padding: 30px;
-   
+    padding: 30px; 
 }
-
 .Langselect{
     border: none;
     background-color: transparent;
@@ -256,6 +243,46 @@ text-align: left;
 }
 
 #search img{
+    
     width: 80%;
     height: 80%;
+}
+
+.Search-Products a, .Search-Documents a{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  
+    border-radius: 15px;
+}
+#prods h2, #docs h2{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-weight: 900;
+    padding-bottom: 10px;
+   
+}
+.Search-Product-list, .Search-Docs-list{
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.Search-Product-list li, .Search-Docs-list li{
+   width: 100%;
+    list-style: none;
+}
+
+.Search-Product-list li:hover, .Search-Docs-list li:hover{
+    opacity: 0.9;
+    transform: scaleY(1.05);
+    transition: 0.1s;
+    font-weight: 600;
+}
+
+.Search-Products a img,.Search-Documents a img{
+    margin-right: 30px;
 }

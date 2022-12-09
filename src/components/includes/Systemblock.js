@@ -80,10 +80,13 @@ function Systemblock(props) {
   return (
     <>
     <div>Systemblock</div>
+
     <h1>{props.lange}</h1>
     <div className='System-Wrapper'>
     <div className='System-Filter'>
       <h3>Filter:</h3>
+
+      <p>Result(s):{systemarr.data.length}</p>
       <div className='System-Filter-Block'>
         <h3>Geländertyp: </h3>
         <br />
@@ -97,6 +100,11 @@ function Systemblock(props) {
 <label class="container">
   <input id="pfosten" type="checkbox" onChange={()=>rerenderprods2("pfosten", "pfosten")}  />
   <span class="checkmark"></span> Pfostengeländer
+</label>
+
+<label class="container">
+  <input id="handlauf" type="checkbox" onChange={()=>rerenderprods2("handlauf", "handlauf")}  />
+  <span class="checkmark"></span> Wandhandläufe
 </label>
 
       </div>
