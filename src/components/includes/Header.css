@@ -63,7 +63,7 @@
     margin-left: -46px;
     background-color: #fff;
     width: 55%;
-    border: 1px solid #ccc;
+    border: 1px solid transparent;
     
 
 }
@@ -258,11 +258,37 @@ text-align: left;
 #prods h2, #docs h2{
     font-size: 20px;
     margin-top: 10px;
-    margin-bottom: 5px;
-    margin-left: 10px;
+    margin-bottom: 10px;
+  
     font-weight: 900;
-    padding-bottom: 10px;
+
+}
+
+#prods h2, #docs h2{
+
+
+    padding: 15px;
+    background-color: #eee;
+    font-size:20px;
+    color: #333;
+    box-shadow: -3px 5px 11px #ccc;
    
+    
+}
+
+#prods,#docs{
+    overflow:hidden;
+}
+
+.Search-Product-list li:first-child,.Search-Docs-list li:first-child {
+
+    margin-top: 5px;
+   
+}
+
+.Search-Product-list li:last-child{
+
+    margin-bottom: 10px;
 }
 .Search-Product-list, .Search-Docs-list{
     display: flex;
@@ -278,11 +304,49 @@ text-align: left;
 
 .Search-Product-list li:hover, .Search-Docs-list li:hover{
     opacity: 0.9;
-    transform: scaleY(1.05);
+    
     transition: 0.1s;
     font-weight: 600;
 }
 
 .Search-Products a img,.Search-Documents a img{
     margin-right: 30px;
+}
+
+.bordery {
+    border: 1px solid #ccc;
+}
+
+
+.hideMe {
+    -moz-animation: cssAnimation 0s ease-in 0.3s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 0.3s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 0.3s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 0.3s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    
+}
+@keyframes cssAnimation {
+    from{
+        
+        width: 100%;
+        height: 100%
+    }
+    to {
+    
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
 }

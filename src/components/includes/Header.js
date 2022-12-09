@@ -10,12 +10,13 @@ function Header(props) {
     const [passw, setpassw]= useState("")
     const [login, setlogin]= useState("")
     const [menu22, setmenu22]= useState(false)
-    const [searchres, setsearchres] = useState()
+    const [searchres, setsearchres] = useState({data:[]})
     const [searchresdocs, setsearchresdocs] = useState({data:[]})
     const [searchresarr, setsearchresarr] = useState([])
     const [langoption, setlangoption] = useState("eng")
     const [headwords, setheadwords] =useState([])
     const [Productword, setProductword] =useState("")
+    const [SearchWordLe, setSearchWordLe] =useState()
     let [Docsword, setDocsword] =useState("")
     const [country, setcountry] =useState()
     const [headwordsger, setheadwordsger] = useState([
@@ -47,7 +48,11 @@ function Header(props) {
     
     const Searching = (event) => {
         const searchWord = event.target.value;
+
         if(searchWord.length >= 3){
+            setSearchWordLe(searchWord)
+        
+            showsuggest()
             fetch('https://squid-app-9h43v.ondigitalocean.app/api/products?filters[description][$contains]='+searchWord)
             .then(res=>res.json())
             .then(json=>{setsearchres(json)}).then(()=>renderSuggest())
@@ -58,12 +63,30 @@ function Header(props) {
         }
 
     }
+    function showsuggest(){
 
+        if(SearchWordLe.length > 2){
+            {document.querySelector(".search-suggest").style ="display:block;"}
+        }
+       
+        if( document.getElementById("suggest").classList.contains("hideMe") == true){
+            document.getElementById("suggest").classList.remove("hideMe")
+        }
+
+        if( document.getElementById("suggest").classList.contains("bordery") == true){
+            document.getElementById("suggest").classList.remove("bordery")
+        }
+    }
+
+    function hidesuggest(){
+
+        document.getElementById("suggest").classList.add("hideMe")
+    }
 
     function setDocword(){
         if(searchresdocs.data.length > 0 ){
             return(
-                <h2>Documents</h2>
+                <h2><span></span>Documents:</h2>
             )
         }else{
             return(
@@ -76,7 +99,7 @@ function Header(props) {
     function setProdword(){
         if(searchres.data.length > 0 ){
             return(
-                <h2>Products</h2>
+                <h2><span></span>Products:</h2>
             )
         }else{
             return(
@@ -87,13 +110,19 @@ function Header(props) {
 
     function renderDocs(){
         console.log(searchresdocs)
+
+        if(searchresdocs.data.length > 5){
+            let arr = searchresdocs
+            arr.data = arr.data.slice(0,5)
+            setsearchresdocs(arr)
+        }
         if(!searchresdocs){
             return(
                 <>
                 </>
             )
         }else{
-
+            
            try{
             return(
                 <>
@@ -117,6 +146,11 @@ function Header(props) {
 
     function renderSuggest(){
         console.log(searchres)
+        if(searchres.data.length > 10){
+            let arr = searchres
+            arr.data = arr.data.slice(0,9)
+            setsearchres(arr)
+        }
         if(!searchres){
             return(
                 <>
@@ -341,9 +375,10 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
             <a href={mainpageurl}><img src='https://www.q-railing.com/files/2200076-qr-instagram-320x320.jpg' width="101"/></a>
             </div>
             <div className='Header-mid-search'>
-                <input on onFocus={()=>{document.querySelector(".search-suggest").style ="display:block;"}} onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
-                <div className='search-suggest'>
+                <input on onFocus={()=>showsuggest()} onBlur={()=>hidesuggest()}onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
+                <div className='search-suggest' id="suggest">
                     {renderSuggest()}
+                
                     {renderDocs()}
                 </div>
             </div>
