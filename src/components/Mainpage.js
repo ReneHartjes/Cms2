@@ -9,7 +9,8 @@ import Banner from './includes/Banner';
 import Mainpagetext from './includes/Mainpagetext';
 import Bestseller from './includes/Bestseller';
 import Footer from './includes/Footer';
-import Teaser from './includes/Teaser';
+import Newletterinvite from './includes/Newletterinvite';
+import Inspirations from './includes/Inspirations';
 
 
 
@@ -43,10 +44,12 @@ function Mainpage(props) {
     </div>
     <div className='page-wrap'>
     <Mainpagetext language={props.language}></Mainpagetext>
-    <Teaser language={props.language}/>
+   
   
   </div>  
   </div>
+  <Inspirations></Inspirations>
+  <Newletterinvite language={props.language}/>
   <Footer language={props.language}></Footer>
   </>
     

@@ -18,7 +18,11 @@
     flex-basis: 75%;
     margin-top: -110px;
     background: white;
-    padding: 25px 50px;
+   
+}
+.Landigpage-inner-textside-wrap{
+    width: 80%;
+    margin: 0 auto;
 }
 .Landingpage-inner-wrap{
     display:flex;
@@ -50,28 +54,43 @@
     cursor: pointer;
 }
 #infobtn, #detailbtn2{
-    background-color: #005094;
+    background-color: #ccc;
     color: white;
-    padding: 5px 7px 5px 7px ;
-    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    flex-basis: 50%;
+    padding:0;
     border: #ccc 1px solid;
 }
 
 #infobtn2, #detailbtn{
     background-color: white;
-    padding: 5px 7px 5px 7px ;
-    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    flex-basis: 50%;
+    padding:0;
     border: #ccc 1px solid;
+}
+
+.togglebtns{
+    display: flex;
+    height: 42px;
+
+    margin-top: -24px;
+    margin-bottom: 20px;
+
 }
 
 #infobtn:hover, #detailbtn:hover,#infobtn2:hover, #detailbtn2:hover{
     cursor: pointer;
     opacity: 0.9;
-    transform: scale(1.1);
+
 }
 
 #detailbtn, #detailbtn2{
-    margin-left: 8px;
+    
 }
 #Landigpageattributes{
     display:none;

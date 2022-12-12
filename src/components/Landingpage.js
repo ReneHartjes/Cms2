@@ -70,11 +70,14 @@ function Landingpage(props) {
                 <div className='Landingpage-inner-wrap'>
                 <div className='Landingpage-inner'>
                   <div className='Landigpage-inner-textside' id="Landigpageinnertextside">
-                    
+                  <div className='togglebtns'>
+                  <button id="infobtn" onClick={()=>toggleinfos()}>INFOS</button><button  id="detailbtn" onClick={()=>toggledetails()}>DETAILS</button>
+                  </div>
+                  <div className='Landigpage-inner-textside-wrap'>
                   <br />
                   <h1>{systemarr.data[0].attributes.titel}</h1>
                   <br />
-                  <button id="infobtn" onClick={()=>toggleinfos()}>INFOS</button><button  id="detailbtn" onClick={()=>toggledetails()}>DETAILS</button>
+                  
                   <br/>
                   <h3>{systemarr.data[0].attributes.titel2}</h3>
                   <p>{systemarr.data[0].attributes.text1}</p>
@@ -85,13 +88,20 @@ function Landingpage(props) {
                   <br />
                   <p>{systemarr.data[0].attributes.text3}</p>
                   </div>
+                  </div>
 
 
                   <div className='Landigpage-attributes' id="Landigpageattributes">
+                  
+                  <div className='togglebtns'>
+                  <button id="infobtn2" onClick={()=>toggleinfos()}>INFOS</button><button id="detailbtn2"  onClick={()=>toggledetails()}>DETAILS</button>
+                  </div>
+
+                  <div className='Landigpage-inner-textside-wrap'>
                   <br />
                   <h1>{systemarr.data[0].attributes.titel}</h1>
                   <br/>
-                  <button id="infobtn2" onClick={()=>toggleinfos()}>INFOS</button><button id="detailbtn2"  onClick={()=>toggledetails()}>DETAILS</button>
+                 
                   <br />
                   
                   {
@@ -129,7 +139,7 @@ function Landingpage(props) {
                       }
                     })
                   }
-             
+                  </div>
                   </div>
                   <div className='Landigpage-inner-Buttons'>
                     
