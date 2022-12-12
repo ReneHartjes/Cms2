@@ -2,7 +2,7 @@
     background-color: #222;
     color:white;
     display: flex;
- 
+    font-weight: 500;
     justify-content: center;
 }
 
@@ -24,14 +24,19 @@
     min-width: 200px;
     list-style: none;
 }
+.Footer-Logo{
+    width: 300px;
+    display: flex;
+    justify-content: flex-start;
+}
 .Footer-Address{
     flex-basis: 50%;
     display: flex;
-    justify-content: right;
+    align-items: flex-end;
+    flex-direction: column;
 }
 #footerlogo{
- 
-
+    float: right;
     margin-bottom: 30px;
 }
 
@@ -39,5 +44,49 @@
     padding: 100px 40px 60px;
     max-width: 1420px;
     width: 100%;
+    position: relative;
     
+}
+
+.Footer-Addressblock{
+    max-width: 300px;
+}
+
+.Footer-Addressblock li{
+    max-width: 300px;
+}
+
+.Footer-bot{
+    display: flex;
+    padding-top: 20px;
+   
+}
+.Footer-bot-links{
+    display:flex;
+    flex-basis: calc( 100% - 300px);
+
+}
+.Footer-bot-links li{
+    
+    list-style: none;
+    margin-left: 15px;
+    opacity: 0.4;
+}
+.Footer-bot-links li:first-child{
+    margin-left: 0px;
+}
+.Footer-bot-links li a{
+    text-decoration: none !important;
+    color: white;
+}
+.Footer-icons{
+    list-style: none !important;
+    display: flex;
+    justify-content: space-around;
+}
+.Footer-icons li{
+    margin-left: 10px;
+}
+.Footer-icons li:first-child{
+    margin-left: 0px;
 }

@@ -4,8 +4,9 @@ import './Footer.css'
 function Footer(props) {
  
 
-let [langstate, setlangstate] = useState();
+let [langstate, setlangstate] = useState({data:[]});
 let [values, setvalues] = useState([]);
+let [addr, setaddr] = useState()
 let valarr = [];
 let valarr2 = [];
 let valarr3 = [];
@@ -35,15 +36,11 @@ useEffect(()=>{
   }
 
   function footerrender(){
-
-
-    
-
-    if(langstate){
- 
+    if(langstate.data.length > 0){
+      console.log(langstate)
       let data1 = langstate.data[0].attributes.text1.split("§§")
       let data2 = langstate.data[0].attributes.text2.split("§§")
-      let data3 = langstate.data[0].attributes.attributes.split("§§")
+   
 
       for (let i = 0; i < data1.length; i++) {
         let returnval = data1[i].split("||")
@@ -55,10 +52,6 @@ useEffect(()=>{
         valarr2.push([returnval[0],returnval[1]])
       }
 
-      for (let i = 0; i < data3.length; i++) {
-        let returnval = data3[i].split("||")
-        valarr3.push([returnval[0],returnval[1]])
-      }
 
       footrenderaddr()
       footrenderprods()
@@ -107,23 +100,37 @@ useEffect(()=>{
   }
 
   function footrenderaddr(){
+    if(langstate.data.length > 0){
     return(
       <ul id="Footer-block3">
       {
-             valarr3.map((statss, index) => (
-              <li> 
-                <a href={statss[1]}>{statss[0]}</a>
-              </li>
+              langstate.data[0].attributes.details.data.map((statss, index) => (
+                <>
+              <ul className='Footer-Addressblock'> 
+                
+                 <li> {statss}</li>
+                 <li> {statss[1]}</li>
+                 <li> {statss[2]}</li>
+                 <li> {statss[3]}</li>
+                 <li> {statss[4]}</li>
+                 <li> {statss[5]}</li>
+                 <li> {statss[6]}</li>
+              </ul>
+              <br />
+              
+              </>
           
              ))}
+             
     </ul>
     )
+  }
   }
 
   return (
     <div className='Footer-wrap'>
       <div className='Footer-inner'>
-      <img src="https://www.q-railing.com/files/q-railing-logo.jpg" id="footerlogo" width={133} height="35"/>
+      
       <div className='Footer-top'>
       
         <div className='Footer-Links'>
@@ -134,11 +141,29 @@ useEffect(()=>{
             
         </div>
         <div className='Footer-Address'>
+          <div className='Footer-Logo'>
+        <img src="https://www.q-railing.com/files/q-railing-logo.jpg" id="footerlogo" width={133} height="35"/>
+        </div>
         {footrenderaddr()}
         </div>
       </div>
       <div className='Footer-bot'>
-
+        <ul className='Footer-bot-links'>
+          <li><a href="/systems">Online Shop</a></li>
+          <li><a href="/systems">Datenschutzerklärung</a></li>
+          <li><a href="/systems">Impressum</a></li>
+          <li><a href="/systems">AGB</a></li>
+          <li><a href="/systems">© 2006 - 2022 Q-railing</a></li>
+          
+        </ul>
+        <ul className='Footer-icons'>
+          <li><a><img width={35} height={35} src='https://www.q-railing.com/files/icon-linkedin.png'/></a></li>
+          <li><a><img width={35} height={35} src='https://www.q-railing.com/files/icon-istagram-1.png'/></a></li>
+          <li><a><img width={35} height={35} src='https://www.q-railing.com/files/icon-facebook.png'/></a></li>
+          <li><a><img width={35} height={35} src='https://www.q-railing.com/files/icon-twitter.png'/></a></li>
+          <li><a><img width={35} height={35} src='https://www.q-railing.com/files/icon-youtube.png'/></a></li>
+          <li><a><img width={35} height={35} src='https://www.q-railing.com/files/icon-whatsapp-1.png'/></a></li>
+        </ul>
       </div>
       </div>
     </div>
