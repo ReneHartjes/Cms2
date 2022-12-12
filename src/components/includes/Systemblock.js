@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './Systemblock.css'
 
 function Systemblock(props) {
-
+    let param = useParams()
     let [systemarr, setsystemarr] = useState({data:[]})
     let [systemarr2, setsystemarr2] = useState({data:[]})
     let [savesearch , setsavesearch] = useState()
@@ -73,7 +74,12 @@ function Systemblock(props) {
     else{
       setsystemarr(systemarr2)
     }
+   }
 
+   function loadsystem(prop){
+    console.log(prop)
+    let systemurl = "/"+param.count+"/systems/"+prop
+    window.location.replace(systemurl)
    }
 
 
@@ -127,7 +133,7 @@ function Systemblock(props) {
                 </div>
                 <div className='Systems-description'>
                  <h2>{statss.attributes.titel}</h2>
-                <button>read more</button>
+                <button onClick={()=>loadsystem(statss.attributes.titel)}>read more</button>
                  </div>
               </div>
 

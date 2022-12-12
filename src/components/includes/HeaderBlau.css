@@ -1,12 +1,12 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Lato', sans-serif;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap');
 .Header-wrap{
     display:flex;
-    justify-content: center;
-    
+    justify-content: center;  
 }
 .Header{
     width: 1170px;
@@ -22,12 +22,10 @@
 .Header-top div ul{
     display: flex;
 }
-
 .Header-top div ul li{
     margin: 5px;
     list-style: none;
 }
-
 .Header-top div .Header-promise img{
     width: 16px;
     height: 16px;
@@ -42,7 +40,6 @@
     justify-content: center;
     text-align: center;
 }
-
 /*header-mid*/
 
 .Header-mid{
@@ -53,15 +50,23 @@
     display: flex;
     flex-basis: calc(100%);
     justify-content: center;
+    position: relative;
 }
 .Header-mid-search input{
     width: 55%;
     height: 42px;
-}
-.Header-mid-search-results{
-    display:none
-}
 
+}
+.search-suggest{
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -46px;
+    background-color: #fff;
+    width: 55%;
+    border: 1px solid transparent;
+    
+
+}
 /*Header-Bottom*/
 .Header-bottom{
     background-color: #f7f7f7;
@@ -78,6 +83,9 @@
 .Header-bottom ul li{
     margin: 10px;
     list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
 
 }
 .loginpopup{
@@ -101,10 +109,244 @@
     padding: 7px;
     display: block;
     position: absolute;
-    top: 20px;
+    top: 80px;
     background-color: #ccc;
     color:black;
     display: flex;
     flex-direction: column;
 }
+.langtogglemenu{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    z-index: 1000;
+    padding: 8px;
+    background-color: #fff;
+    top: 0px;
+    left:0px;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    float:left;
+    animation-name: comein;
+    animation-duration: 0.5s;
 
+}
+@keyframes comein {
+    from {top:1200px}
+    to {top:0px}
+  }
+.langtogglemenu button{
+    display: flex;
+    margin: 2px;
+    padding:4px;
+    text-align: left;
+    background-color: transparent;
+    border:none;
+}
+.langtogglemenu button img{
+    margin-right: 25px;
+}
+.langtogglemenu button:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.lang-dev-wrap {
+text-align: left;
+}
+
+.lang-dev-wrap h3{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-size: 22px;
+    
+}
+#closelangsel{
+    font-weight: 900;
+    font-size: 22px;
+    position: absolute;
+    right: 20px;
+    padding-left:12px;
+    padding-right: 12px;
+    border:2px solid black;
+    border-radius: 50%;
+}
+.lang-card img{
+    width: 32px;
+    height: 32px;
+
+}
+.search-suggest{
+    display:none;
+}
+.lang-card h4{
+    font-size: 16px;
+}
+.lang-card{
+    display:flex;
+}
+.lang-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 30px
+}
+.lang-button-wrapper{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+#landingpage{
+    position: relative;
+    background-color: #fff;
+}
+.Landingpage-Text{
+    width: 80%;
+}
+.Landingpage-block{
+    z-index: 100;
+    margin-top: -100px;
+    background-color: #fff;
+    padding: 30px; 
+}
+.Langselect{
+    border: none;
+    background-color: transparent;
+    display:flex
+}
+.Langselect span{
+    font-size: 18px;
+    margin-top:7px;
+    margin-left:7px
+}
+.Langselect:hover{
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.Header-usermenu ul{
+    display:flex;
+}
+
+.Header-usermenu ul li{
+    margin: 10px;
+    border:none;
+}
+.Header-logo{
+    width: 200px;
+}
+
+#search{
+    background-color: #005094;
+    width: 42px;
+    height: 42px;
+}
+
+#search img{
+    
+    width: 80%;
+    height: 80%;
+}
+
+.Search-Products a, .Search-Documents a{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  
+    border-radius: 15px;
+}
+#prods h2, #docs h2{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+    font-weight: 900;
+
+}
+
+#prods h2, #docs h2{
+
+
+    padding: 15px;
+    background-color: #eee;
+    font-size:20px;
+    color: #333;
+    box-shadow: -3px 5px 11px #ccc;
+   
+    
+}
+
+#prods,#docs{
+    overflow:hidden;
+}
+
+.Search-Product-list li:first-child,.Search-Docs-list li:first-child {
+
+    margin-top: 5px;
+   
+}
+
+.Search-Product-list li:last-child{
+
+    margin-bottom: 10px;
+}
+.Search-Product-list, .Search-Docs-list{
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.Search-Product-list li, .Search-Docs-list li{
+   width: 100%;
+    list-style: none;
+}
+
+.Search-Product-list li:hover, .Search-Docs-list li:hover{
+    opacity: 0.9;
+    
+    transition: 0.1s;
+    font-weight: 600;
+}
+
+.Search-Products a img,.Search-Documents a img{
+    margin-right: 30px;
+}
+
+.bordery {
+    border: 1px solid #ccc;
+}
+
+
+.hideMe {
+    -moz-animation: cssAnimation 0s ease-in 0.3s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 0.3s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 0.3s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 0.3s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    
+}
+@keyframes cssAnimation {
+    from{
+        
+        width: 100%;
+        height: 100%
+    }
+    to {
+    
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}

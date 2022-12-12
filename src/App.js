@@ -9,9 +9,10 @@ import Mainpage from './components/Mainpage';
 import Systems from './components/Systems';
 import EasyGlassPrime from './components/landingpages/EasyGlassPrime';
 import { Langcontext } from './components/context/Langcontext';
-import Landingpagetemplate from './components/landingpages/Landingpagetemplate';
+import Landingpage from './components/Landingpage';
 import { useEffect, useState } from 'react';
 import Productpage from './components/Productpage';
+
 function App() {
   const [context, setcontext] = useState()
   const [globallang, setgloballang] = useState("Eng")
@@ -50,8 +51,8 @@ function App() {
     <Route path="/:count/products/:artid" element={<Productpage lang={setlang} language={globallang}></Productpage>} />
     <Route path="/systems/EasyGlassPrime" element={<EasyGlassPrime lang={setlang} language={globallang}></EasyGlassPrime>} />
     <Route path="/products" element={<Systems lang={setlang} language={globallang}></Systems>} />
+    <Route path="/:count/systems/:pagetitle" element={<Landingpage lang={setlang} language={globallang}></Landingpage>} />
 
-    <Route path="/systems/EasyGlassSmart" element={<Landingpagetemplate lang={setlang} />} />
 
     <Route path="/:count" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
     <Route path="/:count/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />

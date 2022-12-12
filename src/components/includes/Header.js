@@ -21,11 +21,11 @@ function Header(props) {
     const [country, setcountry] =useState()
     const [headwordsger, setheadwordsger] = useState([
         "Große Auswahl", "Schnelle Lieferung","Höchste Qualität", "Maximale Sicherheit","Fragen?Rufen Sie uns am:02822-915-69-0", "Benutzername", "Passwort", "Anmelden",
-        "Suchen","PRODUKTE", "SYSTEME", "HIGHLIGHTS", "BESTSELLER", "%SALE", "Ausloggen"
+        "Suchen","PRODUKTE", "SYSTEME", "PROJEKTE", "KONFIGURATOR", "SERVICE", "Ausloggen"
     ])
     const [headwordseng, setheadwordseng] = useState([
         "Wide System Range", "Quick Delivery","Top Quality Products", "Safety Promised","Questions? Call +1 714 259 1372", "Username", "Password", "Sign in",
-        "Search","PRODUCTS", "SYSTEMS", "HIGHLIGHTS", "BESTSELLER", "%SALE", "Log out"
+        "Search","PRODUCTS", "SYSTEMS", "PROJECTS", "CONFIGURATOR", "SERVICE", "Log out"
     ])
 
     useEffect(()=>{

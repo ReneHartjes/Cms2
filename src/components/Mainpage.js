@@ -12,6 +12,7 @@ import Footer from './includes/Footer';
 import Teaser from './includes/Teaser';
 
 
+
 function Mainpage(props) {
     let [lang, setlang] = useState()
     let [count, setcount] = useState()
@@ -38,7 +39,7 @@ function Mainpage(props) {
     <Header language={props.language} lang={langset}></Header>
     <div className='page'>
     <div className='BannerWarp'>
-    <Banner></Banner>
+    <Banner></Banner>	
     </div>
     <div className='page-wrap'>
     <Mainpagetext language={props.language}></Mainpagetext>
