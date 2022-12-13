@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './Systemblock.css'
-
+import Newletterinvite from './Newletterinvite';
 function Systemblock(props) {
     let param = useParams()
     let [systemarr, setsystemarr] = useState({data:[]})
@@ -133,6 +133,8 @@ function Systemblock(props) {
                 </div>
                 <div className='Systems-description'>
                  <h2>{statss.attributes.titel}</h2>
+                 <p className='Systems-attr1'>{statss.attributes.details.data[0][1]}</p>
+                 <p className='Systems-attr2'>{statss.attributes.details.data[3][1]}</p>
                 <button onClick={()=>loadsystem(statss.attributes.titel)}>read more</button>
                  </div>
               </div>
@@ -142,6 +144,7 @@ function Systemblock(props) {
       }
     </div>
      </div>
+  
     </>
   )
 }

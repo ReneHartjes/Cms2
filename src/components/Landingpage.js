@@ -10,7 +10,7 @@ import Mainpagetext from './includes/Mainpagetext';
 import Bestseller from './includes/Bestseller';
 import Footer from './includes/Footer';
 import Teaser from './includes/Teaser';
-
+import Newletterinvite from './includes/Newletterinvite';
 
 
 function Landingpage(props) {
@@ -174,6 +174,7 @@ function Landingpage(props) {
 
       </div>
     </div>
+
   <Footer language={props.language}></Footer>
   </>
     
