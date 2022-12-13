@@ -60,6 +60,7 @@
 .search-suggest{
     position: absolute;
     margin-top: 50px;
+    z-index: 100;
     margin-left: -46px;
     background-color: #fff;
     width: 55%;

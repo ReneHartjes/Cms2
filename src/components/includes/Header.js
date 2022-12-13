@@ -353,13 +353,16 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
 /*Prep Url Params*/
     let systemurl;
     let mainpageurl;
+    let serviceurl;
 
     if(params.count){
         systemurl = "/"+params.count+"/systems"
         mainpageurl = "/"+params.count
+        serviceurl = "/"+params.count+"/service"
     }else{
         systemurl ="/systems"
         mainpageurl = "/"
+        serviceurl= "/service"
     }   
 
   return (
@@ -394,7 +397,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
             </div>
         </div>
         <div className='Header-bottom'>
-            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li>{headwords[13]}</li></ul>
+            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li><a href={serviceurl}>{headwords[13]}</a></li></ul>
         </div>
     </div>
     </div>

@@ -1,0 +1,38 @@
+.Service-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.Service-select{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+    max-width: 300px;
+}
+.Service-select button{
+    height: 60px;
+    background-color: white;
+    border-bottom: 1px solid #a6a6a6;
+    border-right: none;
+    border-left: none;
+    border-collapse:separate;
+    border-top: none;
+    color: #a6a6a6;
+    font-size: 16px;
+}
+
+.Service-select button:first-child{
+    border-top: 1px solid #a6a6a6;
+}
+
+.Service-data{
+    flex-basis: 70%;
+    width: 100%;
+    margin-left: 70px;
+}
+
+.Service-select button:hover{
+    cursor: pointer;
+    color: #005094;
+    font-size: 18px;
+}

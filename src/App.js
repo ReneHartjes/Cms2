@@ -8,6 +8,7 @@ import {
 import Mainpage from './components/Mainpage';
 import Systems from './components/Systems';
 import EasyGlassPrime from './components/landingpages/EasyGlassPrime';
+import Service from './components/Service';
 import { Langcontext } from './components/context/Langcontext';
 import Landingpage from './components/Landingpage';
 import { useEffect, useState } from 'react';
@@ -56,6 +57,7 @@ function App() {
 
     <Route path="/:count" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
     <Route path="/:count/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
+    <Route path="/:count/service" element={<Service lang={setlang} language={globallang}></Service>} />
     </Routes>
     
     </Langcontext.Provider>
