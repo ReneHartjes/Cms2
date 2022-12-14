@@ -32,13 +32,14 @@ function Systemblock(props) {
     function rendernormal(){
       fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
       .then(res=>res.json())
-      .then(json=>setsystemarr(json))
+      .then(json=>setsystemarr(json)).then(()=>rerenderprods2())
       
     }
 
     useEffect(()=>{
       console.log(filter1)
       filterattrs()
+      
     },[filter1])
 
 
@@ -53,6 +54,7 @@ function Systemblock(props) {
       }
       if(filter1){
       var unique = filter1.filter(onlyUnique);
+      
       setfilter2(unique)}else{
         rendernormal()
       }
@@ -139,15 +141,22 @@ function Systemblock(props) {
       }else{
         filter1.forEach((element, index) => {
           if(element == idd){
+           
             let arr = filter1.filter(
+              
               function(item){
-                return !item.includes(idd)
+                
+                if(!item.match(idd)){
+                  return item
+                }
+                
               }
             )
+            setfilter1(arr)
             console.log(arr)
-            if(arr.length > 0){
-              setfilter1(arr)
-            }else{
+            if(arr.length == 0){
+              
+            
               rendernormal()
             }
           }
@@ -212,7 +221,7 @@ function Systemblock(props) {
         </label>
 
         <label class="container">
-          <input id="gelaenderpfosten" type="checkbox" onChange={()=>rerenderprods2("gelaenderpfosten", "gelaenderpfosten")}  />
+          <input id="gelaenderpf" type="checkbox" onChange={()=>rerenderprods2("gelaenderpf", "gelaenderpf")}  />
           <span class="checkmark"></span> Geländerpfosten
         </label>
 
