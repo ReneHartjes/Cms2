@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './Systemblock.css'
 import Newletterinvite from './Newletterinvite';
+import { render } from '@testing-library/react';
 function Systemblock(props) {
     let param = useParams()
     let [systemarr, setsystemarr] = useState({data:[]})
     let [systemarr2, setsystemarr2] = useState({data:[]})
-    let [savesearch , setsavesearch] = useState()
+    let [savesearch , setsavesearch] = useState([])
+    let [finalsearch , setfinalsearch] = useState([])
     let [selectval, setselectval] = useState([])
-    let [filter1, setfilter1] = useState("")
-    let [filter2, setfilter2] = useState("")
+    let [filter1, setfilter1] = useState([])
+    let [filter2, setfilter2] = useState([])
     let [filter3, setfilter3] = useState("")
     let [filter4, setfilter4] = useState("")
     let [filter5, setfilter5] = useState("")
-    
+
+
+    let filterpush = []
     let arr = []
     let attrs= []
 
@@ -32,50 +36,124 @@ function Systemblock(props) {
       
     }
 
-   function rerenderprods2(attrib, idd){
-
-    if(document.getElementById(idd).checked){
-      let matches = 0;
- 
-   
-
-      setfilter1([...filter1,attrib])
-      arr = systemarr.data.filter(function(item){
-        return  item.attributes.filter.includes(attrib)       
-       })
+    useEffect(()=>{
+      console.log(filter1)
+      filterattrs()
+    },[filter1])
 
 
-     let val = {data:arr}
+    useEffect(()=>{
+      console.log(filter2)
+      gofilter()
+    },[filter2])
 
-     setsystemarr(val)
-    }
-     else{
-      uncheck(attrib, idd)
-     
-
-     }
-   }
-
-   function uncheck(attrib, id){
-
-    let items = document.querySelectorAll(".container")
-    let arr;
-    items.forEach(element => {
-      if(element.children[0].checked){
-        arr = systemarr2.data.filter(function(item){
-          return  item.attributes.filter.includes(element.children[0].id)       
-         })
-         console.log(arr)
+    function filterattrs(){
+      function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
       }
-    });
-    let val = {data:arr}
-    if(arr){
-    setsystemarr(val)}
-    else{
-      setsystemarr(systemarr2)
+      if(filter1){
+      var unique = filter1.filter(onlyUnique);
+      setfilter2(unique)}else{
+        rendernormal()
+      }
+    
     }
-   }
+    function gofilter(){
+      let arr
+      if(filter2){
+        if(filter2.length == 1){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0])       
+           })
+           let val = {data:arr}
+           setsystemarr(val)
+        }
+        if(filter2.length == 2){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])      
+           })
+           let val = {data:arr}
+           setsystemarr(val)
 
+        }
+        if(filter2.length == 3){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
+            || item.attributes.filter.includes(filter2[2])         
+           })
+          let val = {data:arr}
+           setsystemarr(val)
+        }
+        if(filter2.length == 4){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
+            || item.attributes.filter.includes(filter2[2])|| item.attributes.filter.includes(filter2[3])             
+           })
+          let val = {data:arr}
+           setsystemarr(val)
+        }
+        if(filter2.length == 5){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
+            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
+            || item.attributes.filter.includes(filter2[4])            
+           })
+          let val = {data:arr}
+           setsystemarr(val)
+        }
+        if(filter2.length == 6){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1]) 
+             || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3]) 
+              || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])              
+           })
+          let val = {data:arr}
+           setsystemarr(val)
+        }
+        if(filter2.length == 7){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
+            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
+            || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])    
+            || item.attributes.filter.includes(filter2[6])               
+           })
+          let val = {data:arr}
+           setsystemarr(val)
+        }
+        if(filter2.length == 8){
+          arr = systemarr2.data.filter(function(item){
+            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
+            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
+            || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])    
+            || item.attributes.filter.includes(filter2[6]) || item.attributes.filter.includes(filter2[7])                
+           })
+          let val = {data:arr}
+           setsystemarr(val)
+        }
+      }
+    }
+
+   function rerenderprods2(attrib,idd){
+      if(document.getElementById(idd).checked){
+         setfilter1(filter1 =>[...filter1,attrib])
+      }else{
+        filter1.forEach((element, index) => {
+          if(element == idd){
+            let arr = filter1.filter(
+              function(item){
+                return !item.includes(idd)
+              }
+            )
+            console.log(arr)
+            if(arr.length > 0){
+              setfilter1(arr)
+            }else{
+              rendernormal()
+            }
+          }
+        });
+      }
+   }
    function loadsystem(prop){
     console.log(prop)
     let systemurl = "/"+param.count+"/systems/"+prop
@@ -99,26 +177,49 @@ function Systemblock(props) {
        
 
         <label class="container">
-  <input id="ganzglass" type="checkbox" onChange={()=>rerenderprods2("ganzglass", "ganzglass")}  />
-  <span class="checkmark"></span> Ganzglasgeländer
-</label>
+          <input id="ganzglass" type="checkbox" onChange={()=>rerenderprods2("ganzglass", "ganzglass")}  />
+          <span class="checkmark"></span> Ganzglasgeländer
+        </label>
 
-<label class="container">
-  <input id="pfosten" type="checkbox" onChange={()=>rerenderprods2("pfosten", "pfosten")}  />
-  <span class="checkmark"></span> Pfostengeländer
-</label>
+        <label class="container">
+          <input id="pfosten" type="checkbox" onChange={()=>rerenderprods2("pfosten", "pfosten")}  />
+          <span class="checkmark"></span> Pfostengeländer
+        </label>
 
-<label class="container">
-  <input id="handlauf" type="checkbox" onChange={()=>rerenderprods2("handlauf", "handlauf")}  />
-  <span class="checkmark"></span> Wandhandläufe
-</label>
+        <label class="container">
+          <input id="handlauf" type="checkbox" onChange={()=>rerenderprods2("handlauf", "handlauf")}  />
+          <span class="checkmark"></span> Wandhandläufe
+        </label>
 
       </div>
 
 
       <div className='System-Filter-Block'>
-  
 
+      <label class="container">
+          <input id="bodenglasklemmen" type="checkbox" onChange={()=>rerenderprods2("bodenglasklemmen", "bodenglasklemmen")}  />
+          <span class="checkmark"></span> Bodenglasklemmen
+        </label>
+
+        <label class="container">
+          <input id="bodenprofile" type="checkbox" onChange={()=>rerenderprods2("bodenprofile", "bodenprofile")}  />
+          <span class="checkmark"></span> Bodenprofile
+        </label>
+
+        <label class="container">
+          <input id="franzoesischebalkone" type="checkbox" onChange={()=>rerenderprods2("franzoesischebalkone", "franzoesischebalkone")}  />
+          <span class="checkmark"></span> Französische Balkone
+        </label>
+
+        <label class="container">
+          <input id="gelaenderpfosten" type="checkbox" onChange={()=>rerenderprods2("gelaenderpfosten", "gelaenderpfosten")}  />
+          <span class="checkmark"></span> Geländerpfosten
+        </label>
+
+        <label class="container">
+          <input id="glassadapter" type="checkbox" onChange={()=>rerenderprods2("glassadapter", "glassadapter")}  />
+          <span class="checkmark"></span> Glassadapter
+        </label>
 
       </div>
       
