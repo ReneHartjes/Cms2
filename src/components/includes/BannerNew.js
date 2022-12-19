@@ -63,7 +63,7 @@ function BannerNew() {
 <div className='Banner-products-inner-wrap'>
   <div className='Banner-products-text'>
   <h2> Top Kategorien</h2>
-  <p>Hier könnte ein text für unser diversen kategorien stehen</p>
+  <p>Hier könnte ein Text für unsere diversen Kategorien stehen</p>
   </div>
 <div className='Banner-products-inner'>
       <div> </div>
