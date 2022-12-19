@@ -11,6 +11,8 @@
 }
 .Service-select button{
     height: 60px;
+    width: 100%;
+    max-width: 250px;
     background-color: white;
     border-bottom: 1px solid #a6a6a6;
     border-right: none;

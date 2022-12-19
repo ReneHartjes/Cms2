@@ -13,6 +13,7 @@ function Header(props) {
     const [searchres, setsearchres] = useState({data:[]})
     const [searchresdocs, setsearchresdocs] = useState({data:[]})
     const [searchresarr, setsearchresarr] = useState([])
+    const [extracon, setextracon] = useState({data:[]})
     const [langoption, setlangoption] = useState("eng")
     const [headwords, setheadwords] =useState([])
     const [Productword, setProductword] =useState("")
@@ -32,6 +33,56 @@ function Header(props) {
         if(props.language){
         if(props.language.match("GER")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}}
     },[])
+
+
+    useEffect(()=>{
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/texts?filters[title][$eq]=countries')
+        .then(res=>res.json())
+        .then(json=>{setextracon(json)}).then(()=>renderrest())
+
+    },[])
+
+    useEffect(()=>{
+       console.log(extracon)
+
+    },[extracon])
+
+
+    function renderrest(){
+        console.log("RENDER")
+        console.log("extra")
+        console.log(extracon)
+        if(extracon.data.length >0 ){
+          
+            return(
+                <>
+                    <div className='diffcounts'>
+                        <div className='diffcounts-inner'>
+                        {
+                            extracon.data[0].attributes.details.data.map((attrib)=>(
+                                   
+                               
+                                    <>
+                                         <button onClick={()=>{changelang("GER"+"§§"+attrib.code);setmenu22(false);}}>
+                                            {attrib.name}
+
+                                        </button>
+                                    </>
+                                
+                            ))
+
+                        }
+                        </div>
+                    </div>
+                </>
+            )
+        }else{
+            return(
+                <>
+                </>
+            )
+        }
+    }
 
     function changelang(e){
         if(e != localStorage.getItem("Lang")){
@@ -57,7 +108,7 @@ function Header(props) {
             .then(res=>res.json())
             .then(json=>{setsearchres(json)}).then(()=>renderSuggest())
 
-            fetch('https://squid-app-9h43v.ondigitalocean.app/api/documents?filters[title][$contains]='+searchWord)
+            fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+'en-gb'+'-documents?filters[filename][$contains]='+searchWord)
             .then(res=>res.json())
             .then(json=>{setsearchresdocs(json)}).then(()=>renderDocs())
         }
@@ -131,7 +182,7 @@ function Header(props) {
               {
              searchresdocs.data.map((statss, index) => (
               <li className='Search-Documents'> 
-                <a href={statss.attributes.free1}><img src="https://as1.ftcdn.net/v2/jpg/04/17/28/20/1000_F_417282083_X0pybvfs7bqvoNjDOjM3iDklGJ3lTU4q.jpg" width="80"/>{statss.attributes.title}.pdf</a>
+                <a href={statss.attributes.free1}><img src="https://as1.ftcdn.net/v2/jpg/04/17/28/20/1000_F_417282083_X0pybvfs7bqvoNjDOjM3iDklGJ3lTU4q.jpg" width="80"/>{statss.attributes.filename}</a>
               </li>
           
              ))}
@@ -341,6 +392,16 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         </div>
                         </div>
                     </div>
+                    <div className='allcountries'>
+                        <div className='allcountries-inner'>
+                        <button onClick={()=>togglecounts()}>All Countries <p>&#10094;</p></button>
+                        </div>
+                    </div>
+                    <div id="addcounts" className='hider'>
+                       
+                        <br />
+                        {renderrest()}
+                    </div>
                 </div>
             )
         }else{
@@ -350,19 +411,37 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
         }
     }
 
+
+    function togglecounts(){
+        console.log("cung")
+        if(document.getElementById("addcounts").classList.contains("viewer")){
+            document.getElementById("addcounts").classList.add("hider")
+            document.getElementById("addcounts").classList.remove("viewer")
+           
+        }
+        else{
+
+            document.getElementById("addcounts").classList.add("viewer")
+            document.getElementById("addcounts").classList.remove("hider")
+        }
+    }
 /*Prep Url Params*/
     let systemurl;
     let mainpageurl;
     let serviceurl;
+    let projectsurl
 
     if(params.count){
         systemurl = "/"+params.count+"/systems"
         mainpageurl = "/"+params.count
         serviceurl = "/"+params.count+"/service"
+        projectsurl = "/"+params.count+"/projects"
+
     }else{
         systemurl ="/systems"
         mainpageurl = "/"
         serviceurl= "/service"
+        projectsurl = "/projects"
     }   
 
   return (
@@ -397,7 +476,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
             </div>
         </div>
         <div className='Header-bottom'>
-            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li>{headwords[11]}</li><li>{headwords[12]}</li><li><a href={serviceurl}>{headwords[13]}</a></li></ul>
+            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li><a href={projectsurl}>{headwords[11]}</a></li><li>{headwords[12]}</li><li><a href={serviceurl}>{headwords[13]}</a></li></ul>
         </div>
     </div>
     </div>

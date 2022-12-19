@@ -8,22 +8,31 @@
     position: relative;
     
   }
+
+  .Banner-small3{
+
+    width: 100%;
+    height: 100%;
+    margin-top: 65px;
+  }
   .Banner-small2-wrap {
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 10;
     top:50%;
     left: 50%;
     transform:translate( -50% , -50% );
     position: absolute;
+    width: 100%;
+    height: 100%;
   }
   
   .Banner-small2 h3 {
 
-    max-width: 120ch;
+  
     color: white;
     text-align: center;
     transform: scale(0.94);
@@ -36,13 +45,19 @@
     }
   }
   
-  span {
+  .Banner-left span {
     display: inline-block;
     opacity: 0;
     filter: blur(4px);
     margin: 5px;
-
-    font-size: 48px;
+    color: #222;
+    font-size: 72px;
+    font-weight: 700;
+  }
+  .Banner-left span p{
+    font-size: 36px;
+    font-weight: 400;
+    color: #333
   }
   
   span:nth-child(1) {
@@ -128,16 +143,105 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 20;
-    background-color: rgba(0,0,0,0.5);
+    z-index: 5;
+    background-color: rgba(178,178,178, 0.95);
     padding: 120px;
-    border-radius: 15px;
+ 
   }
 
   .Banner-Front{
     width: 100%;
     height: 100%;
     position: relative;
-    z-index: 10000;
+    z-index: 10;
     margin-top: -35px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .Banner-left{
+    flex-basis: 65%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 110px;
+  }
+  .Banner-left-inner{
+    width: 80%;
+    display: flex;
+    align-self: center;
+  }
+  .Banner-right{
+    flex-basis: 35%;
+    margin-bottom: 110px;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+  }
+  .Banner-products-inner-head{
+    width: 100%;
+  }
+
+  .Banner-right div{
+     padding-top:20px ;
+     font-size: 22px;
+     padding-bottom: 20px;
+  }
+  .Banner-right div a{
+    color: #005094;
+  }
+  .Banner-right div p{
+    color: #111;
+  }
+
+  .Banner-products-wrap{
+    display: flex;
+   width:   100%;
+   justify-content: center;
+  }
+  .Banner-products-inner-wrap{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+  }
+
+  .Banner-products-inner-wrap .Banner-products-text{
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    color: #333;
+    top: -155px;
+    padding-top: 15px;
+    padding-bottom: 57px;
+    text-align: center;
+    box-shadow: 5px 11px 22px #ccc;
+  }
+
+  .Banner-products-text h2{
+    font-size: 28px;
+    font-weight: 400;
+  }
+  .Banner-products-text p{
+    font-size: 18px;
+  }
+
+  .Banner-products-inner{
+    max-width: 1170px;
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 70px;
+    width: 100%;
+    margin-top: -80px;
+    z-index: 10;
+    background-color: white;
+    padding-left: 35px;
+    padding-right: 35px;
+    box-shadow: 3px 11px 22px #ccc;
+    padding-bottom: 35px;
+  }
+  .Banner-products-card{
+    margin: 5px;
+  }
+  .Banner-products-card img{
+    max-width: 100%;
   }

@@ -15,50 +15,37 @@ function Systemblock(props) {
     let [filter3, setfilter3] = useState("")
     let [filter4, setfilter4] = useState("")
     let [filter5, setfilter5] = useState("")
-
-
     let filterpush = []
     let arr = []
     let attrs= []
-
-
     useEffect(()=>{
         fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
         .then(res=>res.json())
         .then(json=>{setsystemarr(json); setsystemarr2(json)})
 
     },[])
-
     function rendernormal(){
       fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
       .then(res=>res.json())
       .then(json=>setsystemarr(json)).then(()=>rerenderprods2())
-      
     }
-
     useEffect(()=>{
       console.log(filter1)
       filterattrs()
-      
     },[filter1])
-
-
     useEffect(()=>{
       console.log(filter2)
       gofilter()
     },[filter2])
-
     function filterattrs(){
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
       if(filter1){
       var unique = filter1.filter(onlyUnique);
-      
       setfilter2(unique)}else{
         rendernormal()
       }
-    
     }
     function gofilter(){
       let arr
@@ -141,22 +128,16 @@ function Systemblock(props) {
       }else{
         filter1.forEach((element, index) => {
           if(element == idd){
-           
             let arr = filter1.filter(
-              
               function(item){
-                
                 if(!item.match(idd)){
                   return item
                 }
-                
               }
             )
             setfilter1(arr)
             console.log(arr)
             if(arr.length == 0){
-              
-            
               rendernormal()
             }
           }

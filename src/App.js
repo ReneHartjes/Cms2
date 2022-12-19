@@ -13,25 +13,23 @@ import { Langcontext } from './components/context/Langcontext';
 import Landingpage from './components/Landingpage';
 import { useEffect, useState } from 'react';
 import Productpage from './components/Productpage';
+import Projectpage from './components/Projectpage';
 
 function App() {
   const [context, setcontext] = useState()
   const [globallang, setgloballang] = useState("Eng")
   const [globalcountry, setglobalcountry] = useState("United States")
   if(localStorage.getItem("Lang")){
-
     if(localStorage.getItem("Lang") != globallang){
       setgloballang(localStorage.getItem("Lang"))
     }
   }
   if(localStorage.getItem("Country")){
-
     if(localStorage.getItem("Country") != globalcountry){
       setglobalcountry(localStorage.getItem("Country"))
     }
   }
   function setlang(langval){
-
     let langsplit = langval.split("§§")
     setgloballang(langsplit[0])
     setglobalcountry(langval[1])
@@ -58,6 +56,7 @@ function App() {
     <Route path="/:count" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
     <Route path="/:count/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
     <Route path="/:count/service" element={<Service lang={setlang} language={globallang}></Service>} />
+    <Route path="/:count/projects" element={<Projectpage lang={setlang} language={globallang}></Projectpage>} />
     </Routes>
     
     </Langcontext.Provider>

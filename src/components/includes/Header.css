@@ -129,6 +129,7 @@
     position: fixed;
     height: 100%;
     float:left;
+    overflow-y: scroll;
     animation-name: comein;
     animation-duration: 0.5s;
 
@@ -350,4 +351,57 @@ text-align: left;
         height:0;
         visibility:hidden;
     }
+}
+
+.diffcounts{
+ display: flex;
+ justify-content: center;
+}
+
+.diffcounts-inner{
+    max-width: 870px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.diffcounts-inner button{
+   
+    border-right: 1px solid #ccc;
+}
+.allcountries{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.allcountries-inner{
+    width: 100%;
+    max-width: 870px;
+
+}
+.allcountries-inner button{
+
+    padding: 16px 28px 16px 28px;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 7px #ccc;
+    margin-top: 60px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.allcountries-inner button p{
+    transform: rotate(270deg);
+    margin-left: 20px;
+}
+.viewer{
+    display: block ;
+    animation-name: comein2;
+    animation-duration: 0.5s;
+}
+
+@keyframes comein2 {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+.hider{
+    display: none ;
 }

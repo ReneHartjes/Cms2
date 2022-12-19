@@ -11,6 +11,7 @@ import Bestseller from './includes/Bestseller';
 import Footer from './includes/Footer';
 import Newletterinvite from './includes/Newletterinvite';
 import Inspirations from './includes/Inspirations';
+import BannerNew from './includes/BannerNew'
 
 
 
@@ -40,7 +41,7 @@ function Mainpage(props) {
     <Header language={props.language} lang={langset}></Header>
     <div className='page'>
     <div className='BannerWarp'>
-    <Banner></Banner>	
+    <BannerNew></BannerNew>
     </div>
     <div className='page-wrap'>
     <Mainpagetext language={props.language}></Mainpagetext>
