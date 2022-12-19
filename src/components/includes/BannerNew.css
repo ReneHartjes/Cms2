@@ -166,7 +166,7 @@
     margin-bottom: 110px;
   }
   .Banner-left-inner{
-    width: 80%;
+    width: 85%;
     display: flex;
     align-self: center;
   }
@@ -188,6 +188,14 @@
   }
   .Banner-right div a{
     color: #005094;
+    text-decoration: none;
+  }
+
+  .Banner-right div a b::after{
+    content:"❯";
+    margin-left: 10px;
+    font-size: 18px;
+    
   }
   .Banner-right div p{
     color: #111;
@@ -231,12 +239,12 @@
     display: grid;
     grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 70px;
     width: 100%;
-    margin-top: -80px;
+    margin-top: -70px;
     z-index: 10;
     background-color: white;
     padding-left: 35px;
     padding-right: 35px;
-    box-shadow: 3px 11px 22px #ccc;
+    box-shadow: 4px 18px 32px #ccc;
     padding-bottom: 35px;
   }
   .Banner-products-card{
@@ -244,4 +252,8 @@
   }
   .Banner-products-card img{
     max-width: 100%;
+  }
+
+  .Banner-right-inner{
+    width: 85%;
   }

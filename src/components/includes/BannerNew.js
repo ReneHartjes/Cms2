@@ -16,7 +16,7 @@ function BannerNew() {
               <div className='Banner-left'>
                 <div className='Banner-left-inner'>
                  <h3> 
-                <span>the</span>
+                <span>The</span>
                 <span>premium</span>
                 <span>brand</span>
                 <span>in</span>
@@ -33,17 +33,19 @@ function BannerNew() {
               </div>
               </div>
               <div className='Banner-right'>
+              <div className='Banner-right-inner'>
                   <div>
-                    <a><b>Verarbeiter</b>
+                    <a href="/"><b>Verarbeiter</b>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipis-cing elit</p></a>
                   </div>
                   <div>
-                    <a><b>Architekten</b>
+                    <a href="/"><b>Architekten</b>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipis-cing elit, sed diam nonummy </p></a>
                   </div>
                   <div>
-                    <a><b>Privatkunden</b>
+                    <a href="/"><b>Privatkunden</b>
                     <p>Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p></a>
+                  </div>
                   </div>
               </div>
             </div>
