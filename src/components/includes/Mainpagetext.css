@@ -4,6 +4,7 @@
     align-items: center;
     text-align: center;
     padding-top: 20px;
+    background-color: white;
     padding-bottom: 20px;
 }
 .Mainpagetext-wrap h2{
@@ -11,4 +12,57 @@
 }
 .Mainpagetext-wrap p{
     font-size: 18px;
+}
+
+.Mainpagetext-inner{
+    max-width: 870px;
+}
+
+.Mainpagetext-icons{
+    max-width: 1420px;
+    display: grid;
+    margin-top: 50px;
+    background-color: white;
+    padding-top: 30px;
+    gap: 50px;
+    padding-bottom: 30px;
+    grid-template-columns: 60px 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+}
+
+.Mainpagetext-icons-card p{
+    font-size: 12px;
+}
+
+.Mainpagetext-btns{
+    max-width: 870px;
+    width: 100%;
+    padding-bottom: 40px;
+}
+.Mainpagetext-btns button{
+
+    margin: 10px;
+    margin-top: 30px;
+    padding: 6px 15px 6px 15px;
+}
+.Mainpagetext-btns button:hover{
+    opacity: 0.9;
+    transform: scale(1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+#productsbtn{
+    background-color: #005094;
+    color: white;
+    border: white;
+}
+#aboutbtn{
+    
+    color: #005094;
+    border: #005094 1px solid;
+}
+
+#mainpagetexttitle{
+    color: #005094;
+    padding-top: 25px;
+    padding-bottom: 15px;
 }

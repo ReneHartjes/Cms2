@@ -20,8 +20,14 @@ function Landingpage(props) {
     let parasynetize;
     const params =  useParams()
     let [language, setlanguage] = useState("eng")
-    let [systemarr, setsystemarr] = useState({data:[]})
-    const Paraaa = useParams()
+    let [systemarr, setsystemarr] = useState({"data":[]})
+    let para = useParams()
+    let Paraaa = useParams()
+    let la
+    let arrla
+    if(para.count){  la= para.count
+    arrla = la.split("-") 
+    }else{la="en"}
     const langset = (message) => {
         let arr = message.split("§§")
         setlang(arr[0])
@@ -37,8 +43,8 @@ function Landingpage(props) {
         if(Paraaa.pagetitle.match(" ")){
           Paraaa.pagetitle.replace(" ", "%20")
         }
-        console.log('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$eq]='+Paraaa.pagetitle) 
-        fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase()+'&filters[titel][$eq]='+Paraaa.pagetitle)
+        console.log('https://squid-app-9h43v.ondigitalocean.app/api/'+arrla[0]+'-systems?filters[titel1][$eq]='+Paraaa.pagetitle)
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+arrla[0]+'-systems?filters[titel1][$eq]='+Paraaa.pagetitle)
         .then(res=>res.json())
         .then(json=>{setsystemarr(json); console.log(json)})
       },[])
@@ -65,7 +71,7 @@ function Landingpage(props) {
         return(
             <div className='Landingpage-wrapper'>
                 <div className='Landingpage-banner'>
-                  <img src={systemarr.data[0].attributes.img2}></img>
+                  <img src={systemarr.data[0].attributes.image1}></img>
                 </div>
                 <div className='Landingpage-inner-wrap'>
                 <div className='Landingpage-inner'>
@@ -75,7 +81,7 @@ function Landingpage(props) {
                   </div>
                   <div className='Landigpage-inner-textside-wrap'>
                   <br />
-                  <h1>{systemarr.data[0].attributes.titel}</h1>
+                  <h1>{systemarr.data[0].attributes.titel1}</h1>
                   <br />
                   
                   <br/>
@@ -106,9 +112,9 @@ function Landingpage(props) {
                   
                   {
                   
-                    systemarr.data[0].attributes.details.data.map((statss, index) => {
+                    systemarr.data[0].attributes.details1.data.map((statss, index) => {
                       
-                      if(statss != systemarr.data[0].attributes.details.data[systemarr.data[0].attributes.details.data.length-1]){
+                      if(statss != systemarr.data[0].attributes.details1.data[systemarr.data[0].attributes.details1.data.length-1]){
                       return(
                       <>
                         <tr><td><b>{statss[0]}</b></td><td className='spacer'></td><td className='Landingpage-stats-text'>{statss[1]}</td></tr>

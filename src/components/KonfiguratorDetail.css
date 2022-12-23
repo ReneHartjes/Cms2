@@ -1,0 +1,107 @@
+.Config-measure{
+    display:flex;
+    justify-content: center;
+}
+
+.Config-measure-x, .Config-measure-y, .Config-measure-z{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Config-measure-wrap{
+    display: flex;
+}
+.Config-measure-z input{
+    max-width: 80px;
+    
+}
+.hidden{
+    display:none !important
+}
+.Config-measure input{
+    max-width: 80px;
+}
+
+.Config-measure-input-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.Config-measure-input-div p{
+    font-weight: 600;
+    width: 80px;
+}
+
+.Config-measure-table-val{
+    padding-left: 20px;
+    background-color: #f4f4f4;
+}
+
+.Config-measure-ov td{
+    border: 1px solid #ccc;
+}
+.Config-measure-ov{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.railchoice{
+    display: flex;
+
+    justify-content: center;
+
+}
+
+.railchoice button{
+    width: 150px;
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc
+}
+
+.railchoice-head{
+    text-align: center;
+}
+
+.underchoice-btn img{
+    width: 120px;
+    height: 120px;
+}
+.morebtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.underchoice{
+    display: flex;
+    justify-content: center;
+}
+.underchoice button{
+    margin: 10px;
+}
+
+.color{
+    display: flex;
+    justify-content: center;
+}
+
+.glassfill{
+    display: flex;
+    justify-content: center;
+}
+
+.glassfill button{
+    margin: 10px;
+}
+.railingtop {
+     display: flex;
+     justify-content: center;
+}
+.railingtop button{
+    margin: 10px;
+}

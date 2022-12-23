@@ -3,8 +3,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Navigate,
   Link
 } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import Mainpage from './components/Mainpage';
 import Systems from './components/Systems';
 import EasyGlassPrime from './components/landingpages/EasyGlassPrime';
@@ -14,6 +16,8 @@ import Landingpage from './components/Landingpage';
 import { useEffect, useState } from 'react';
 import Productpage from './components/Productpage';
 import Projectpage from './components/Projectpage';
+import Konfigurator from './components/Konfigurator';
+import KonfiguratorDetail from './components/KonfiguratorDetail';
 
 function App() {
   const [context, setcontext] = useState()
@@ -45,7 +49,11 @@ function App() {
     <Routes>
 
 
-    <Route path="/" element={<Mainpage lang={setlang} language={globallang}></Mainpage>} />
+
+
+    <Route path="/" element={<Navigate to="/de-de"/>}  />
+
+
     <Route path="/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
     <Route path="/:count/products/:artid" element={<Productpage lang={setlang} language={globallang}></Productpage>} />
     <Route path="/systems/EasyGlassPrime" element={<EasyGlassPrime lang={setlang} language={globallang}></EasyGlassPrime>} />
@@ -57,6 +65,8 @@ function App() {
     <Route path="/:count/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
     <Route path="/:count/service" element={<Service lang={setlang} language={globallang}></Service>} />
     <Route path="/:count/projects" element={<Projectpage lang={setlang} language={globallang}></Projectpage>} />
+    <Route path="/:count/configurator" element={<Konfigurator lang={setlang} language={globallang}></Konfigurator>} />
+    <Route path="/:count/configurator/:title" element={<KonfiguratorDetail lang={setlang} language={globallang}></KonfiguratorDetail>} />
     </Routes>
     
     </Langcontext.Provider>

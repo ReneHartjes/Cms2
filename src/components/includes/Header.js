@@ -31,7 +31,7 @@ function Header(props) {
 
     useEffect(()=>{
         if(props.language){
-        if(props.language.match("GER")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}}
+        if(props.language.match("de")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}}
     },[])
 
 
@@ -63,7 +63,7 @@ function Header(props) {
                                    
                                
                                     <>
-                                         <button onClick={()=>{changelang("GER"+"§§"+attrib.code);setmenu22(false);}}>
+                                         <button onClick={()=>{changelang("de"+"§§"+attrib.code);setmenu22(false);}}>
                                             {attrib.name}
 
                                         </button>
@@ -91,7 +91,7 @@ function Header(props) {
             localStorage.setItem("Country",splitarr[1])
             props.lang(e)
          
-            if(e.match("GER")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}
+            if(e.match("de")){ setheadwords(headwordsger)}else{ setheadwords(headwordseng)}
             window.location.replace("/"+splitarr[0]+"-"+splitarr[1])
         }
     }
@@ -277,12 +277,12 @@ function Header(props) {
         }
     }
 
-let langdataamerica = [["Argentinia","Espanol","ENG"],["Brasil","Portugês","ENG"],["Canada","English","ENG"],["Canada","Francais","ENG"],["Chile","Espanol","ENG"],["México","Espanol","ENG"],
-    ["Puerto Rico","Espanol","ENG"],["United States","English","ENG"],["Uruguay","Espanol","ENG"]
+let langdataamerica = [["Argentinia","Espanol","en"],["Brasil","Portugês","en"],["Canada","English","en"],["Canada","Francais","en"],["Chile","Espanol","en"],["México","Espanol","en"],
+    ["Puerto Rico","Espanol","en"],["United States","English","en"],["Uruguay","Espanol","en"]
 ]
 
-let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG"],["Belgien","Deutsch","GER"],["Belgium","English","ENG"],["Belique","Francais","ENG"],["Finland","English","ENG"],
-["France","Francais","ENG"],["Deutschland","Deutsch","GER"],["Nederland","Nederlands","ENG"],["Norway","English","ENG"],["United Kingdom","English","ENG"],["Schweiz","Deutsch","GER"]
+let langdataEurope = [["Österreich","Deutsch","de"],["Austria","Englisch","en"],["Belgien","Deutsch","de"],["Belgium","English","en"],["Belique","Francais","en"],["Finland","English","en"],
+["France","Francais","fr"],["Deutschland","Deutsch","de"],["Nederland","Nederlands","en"],["Norway","English","en"],["United Kingdom","English","en"],["Schweiz","Deutsch","de"]
 ]
 
     function menu(){
@@ -294,7 +294,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         <div className='lang-dev-wrap'>
                         <h3>Africa</h3>
                         <div className='lang-row'>
-                            <button onClick={()=>{changelang("GER"+"§§"+"Egypt");setmenu22(false);}}>
+                            <button onClick={()=>{changelang("en"+"§§"+"Egypt");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -303,7 +303,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("ENG"+"§§"+"Marocco");setmenu22(false);}}>
+                            <button onClick={()=>{changelang("de"+"§§"+"Marocco");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -312,7 +312,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("GER"+"§§"+"Maroc");setmenu22(false);}}>
+                            <button onClick={()=>{changelang("en"+"§§"+"Maroc");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -321,7 +321,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("ENG"+"§§"+"South Africa");setmenu22(false);}}>
+                            <button onClick={()=>{changelang("en"+"§§"+"South Africa");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -371,7 +371,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                         <div className='lang-dev-wrap'>
                         <h3>Middle East</h3>
                         <div className='lang-row'>
-                        <button onClick={()=>{changelang("GER"+"§§"+"Saudi Arabia");setmenu22(false);}}>
+                        <button onClick={()=>{changelang("de"+"§§"+"Saudi Arabia");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -380,7 +380,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
                                 </div>
                             </div>
                             </button>
-                            <button onClick={()=>{changelang("GER"+"§§"+"UAE");setmenu22(false);}}>
+                            <button onClick={()=>{changelang("de"+"§§"+"UAE");setmenu22(false);}}>
                             <div className='lang-card'>
                                 <img src="https://icons.veryicon.com/png/o/weather/2px-linear-icon/landmark.png"  />
                                 <div>
@@ -430,31 +430,46 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
     let mainpageurl;
     let serviceurl;
     let projectsurl
+    let configurl
 
     if(params.count){
         systemurl = "/"+params.count+"/systems"
         mainpageurl = "/"+params.count
         serviceurl = "/"+params.count+"/service"
         projectsurl = "/"+params.count+"/projects"
+        configurl = "/"+params.count+"/configurator"
 
     }else{
         systemurl ="/systems"
         mainpageurl = "/"
         serviceurl= "/service"
         projectsurl = "/projects"
+        configurl = "/configurator"
     }   
+
+    window.onscroll = function() {myscrollFunction()};
+var navbar = document.getElementById("header");
+var sticky = 60;
+function myscrollFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
 
   return (
    
     <div className='Header-wrap'>
-    <div className='Header'>
+    <div className='Header' id="header">
         <div className='Header-top'>
 
 
         </div>
         <div className='Header-mid'>
             <div className='Header-logo'>
-            <a href={mainpageurl}><img src='https://www.q-railing.com/files/2200076-qr-instagram-320x320.jpg' width="101"/></a>
+            <a href={mainpageurl}><img src='https://www.q-railing.com/files/logo-q-railing.png' width="101"/></a>
             </div>
             <div className='Header-mid-search'>
                 <input on onFocus={()=>showsuggest()} onBlur={()=>hidesuggest()}onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
@@ -476,7 +491,7 @@ let langdataEurope = [["Österreich","Deutsch","GER"],["Austria","Englisch","ENG
             </div>
         </div>
         <div className='Header-bottom'>
-            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li><a href={projectsurl}>{headwords[11]}</a></li><li>{headwords[12]}</li><li><a href={serviceurl}>{headwords[13]}</a></li></ul>
+            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li><a href={projectsurl}>{headwords[11]}</a></li><li><a href={configurl}>{headwords[12]}</a></li><li><a href={serviceurl}>{headwords[13]}</a></li></ul>
         </div>
     </div>
     </div>

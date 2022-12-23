@@ -1,0 +1,41 @@
+.Stats-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #0f3c7d;
+    padding-bottom: 55px;
+}
+.Stats-inner{
+    max-width: 1170px;
+    width: 100%;
+}
+.Stats-inner h2{
+    font-size: 38px;
+    font-weight: 700;
+    color: #95bfd8
+}
+.Stats-inner p{
+    font-size: 16px;
+    margin-top: 13px;
+    color:#95bfd8
+}
+
+.Stats-3col{
+    display:flex;
+    justify-content: space-between;
+    text-align: center;
+  
+}
+
+.Stats-head{
+    text-align: center;
+    padding-bottom: 55px;
+    padding-top: 55px;
+}
+
+.Stats-head h2{
+    font-weight: 300;
+}
+
+
+/*Übernommen*/

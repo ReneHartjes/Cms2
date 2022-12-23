@@ -12,6 +12,7 @@ import Footer from './includes/Footer';
 import Newletterinvite from './includes/Newletterinvite';
 import Inspirations from './includes/Inspirations';
 import BannerNew from './includes/BannerNew'
+import Stats from './includes/Stats';
 
 
 
@@ -44,11 +45,13 @@ function Mainpage(props) {
     <BannerNew></BannerNew>
     </div>
     <div className='page-wrap'>
-    <Mainpagetext language={props.language}></Mainpagetext>
+ 
    
   
   </div>  
   </div>
+  <Mainpagetext language={props.language}></Mainpagetext>
+  <Stats></Stats>
   <Inspirations></Inspirations>
   <Newletterinvite language={props.language}/>
   <Footer language={props.language}></Footer>

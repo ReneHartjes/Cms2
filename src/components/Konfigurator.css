@@ -1,0 +1,164 @@
+
+#glasswitch{
+    margin-top: 16px;
+    margin-left: 20px;
+}
+.slidecontainer {
+    width: 70%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D;
+    border-radius: 50%;
+    border:1px solid green;
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    border-radius: 50%;
+    border:1px solid green;
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider2 {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  #btneckig{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc
+  }
+  #btneckig:hover, #btnrund:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  #btnrund{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ccc
+  }
+  #klammern{
+    display: flex;
+  }
+  .slider2:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider2 {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider2 {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider2:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider2.round {
+    border-radius: 34px;
+  }
+  
+  .slider2.round:before {
+    border-radius: 50%;
+  }
+
+  .switcher{
+    display: flex;
+    align-items: center;
+  }
+  #glasswitch{
+    margin-top: 5px;
+  }
+
+
+  /*bis hier übernommen*/
+  .Config-left{
+    flex-basis: 50%;
+    width: 100%;
+  }
+  
+  .Config-selects{
+    width: 100%;
+  }
+  .Config-inner{
+    display: flex;
+    max-width: 1170px;
+    width: 100%;
+    justify-content: center;
+  }
+  .Config-Ecken label{
+    font-size: 14px;
+  }
+
+  .hidden{
+    display: none;
+  }
+  .shown{
+    display:block;
+  }

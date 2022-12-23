@@ -397,11 +397,21 @@ text-align: left;
     animation-name: comein2;
     animation-duration: 0.5s;
 }
-
 @keyframes comein2 {
     from {opacity: 0;}
     to {opacity: 1;}
   }
 .hider{
     display: none ;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 100000;
+    background-color: white;
+    width: 100%;
+  
+  }
+.sticky .Header-mid{
+    display: none;
 }

@@ -16,16 +16,20 @@ function Systemblock(props) {
     let [filter4, setfilter4] = useState("")
     let [filter5, setfilter5] = useState("")
     let filterpush = []
+
     let arr = []
     let attrs= []
+
+    let lan = param.count
+    let lanarr = lan.split("-")
     useEffect(()=>{
-        fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
+        fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+lanarr[0]+'-systems')
         .then(res=>res.json())
         .then(json=>{setsystemarr(json); setsystemarr2(json)})
 
     },[])
     function rendernormal(){
-      fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
+      fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+lanarr[0]+'-systems')
       .then(res=>res.json())
       .then(json=>setsystemarr(json)).then(()=>rerenderprods2())
     }
@@ -52,14 +56,14 @@ function Systemblock(props) {
       if(filter2){
         if(filter2.length == 1){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0])       
+            return  item.attributes.filter1.includes(filter2[0])       
            })
            let val = {data:arr}
            setsystemarr(val)
         }
         if(filter2.length == 2){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])      
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1])      
            })
            let val = {data:arr}
            setsystemarr(val)
@@ -67,54 +71,54 @@ function Systemblock(props) {
         }
         if(filter2.length == 3){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2])         
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1])  
+            || item.attributes.filter1.includes(filter2[2])         
            })
           let val = {data:arr}
            setsystemarr(val)
         }
         if(filter2.length == 4){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2])|| item.attributes.filter.includes(filter2[3])             
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1])  
+            || item.attributes.filter1.includes(filter2[2])|| item.attributes.filter1.includes(filter2[3])             
            })
           let val = {data:arr}
            setsystemarr(val)
         }
         if(filter2.length == 5){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
-            || item.attributes.filter.includes(filter2[4])            
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1])  
+            || item.attributes.filter1.includes(filter2[2]) || item.attributes.filter1.includes(filter2[3])  
+            || item.attributes.filter1.includes(filter2[4])            
            })
           let val = {data:arr}
            setsystemarr(val)
         }
         if(filter2.length == 6){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1]) 
-             || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3]) 
-              || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])              
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1]) 
+             || item.attributes.filter1.includes(filter2[2]) || item.attributes.filter1.includes(filter2[3]) 
+              || item.attributes.filter1.includes(filter2[4]) || item.attributes.filter1.includes(filter2[5])              
            })
           let val = {data:arr}
            setsystemarr(val)
         }
         if(filter2.length == 7){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
-            || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])    
-            || item.attributes.filter.includes(filter2[6])               
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1])  
+            || item.attributes.filter1.includes(filter2[2]) || item.attributes.filter1.includes(filter2[3])  
+            || item.attributes.filter1.includes(filter2[4]) || item.attributes.filter1.includes(filter2[5])    
+            || item.attributes.filter1.includes(filter2[6])               
            })
           let val = {data:arr}
            setsystemarr(val)
         }
         if(filter2.length == 8){
           arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
-            || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])    
-            || item.attributes.filter.includes(filter2[6]) || item.attributes.filter.includes(filter2[7])                
+            return  item.attributes.filter1.includes(filter2[0]) || item.attributes.filter1.includes(filter2[1])  
+            || item.attributes.filter1.includes(filter2[2]) || item.attributes.filter1.includes(filter2[3])  
+            || item.attributes.filter1.includes(filter2[4]) || item.attributes.filter1.includes(filter2[5])    
+            || item.attributes.filter1.includes(filter2[6]) || item.attributes.filter1.includes(filter2[7])                
            })
           let val = {data:arr}
            setsystemarr(val)
@@ -220,13 +224,13 @@ function Systemblock(props) {
             <>
               <div className='System-card'>
                 <div className='System-card-img'> 
-                <img src={statss.attributes.img2} />
+                <img src={statss.attributes.image1} />
                 </div>
                 <div className='Systems-description'>
-                 <h2>{statss.attributes.titel}</h2>
-                 <p className='Systems-attr1'>{statss.attributes.details.data[0][1]}</p>
-                 <p className='Systems-attr2'>{statss.attributes.details.data[3][1]}</p>
-                <button onClick={()=>loadsystem(statss.attributes.titel)}>READ MORE</button>
+                 <h2>{statss.attributes.titel1}</h2>
+                 <p className='Systems-attr1'>{statss.attributes.details1.data[0][1]}</p>
+                 <p className='Systems-attr2'>{statss.attributes.details1.data[3][1]}</p>
+                <button onClick={()=>loadsystem(statss.attributes.titel1)}>READ MORE</button>
                  </div>
               </div>
 
