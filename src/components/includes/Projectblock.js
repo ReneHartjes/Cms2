@@ -6,160 +6,138 @@ function Projectblock(props) {
     let param = useParams()
     let [systemarr, setsystemarr] = useState({data:[]})
     let [systemarr2, setsystemarr2] = useState({data:[]})
-    let [savesearch , setsavesearch] = useState([])
-    let [finalsearch , setfinalsearch] = useState([])
-    let [selectval, setselectval] = useState([])
     let [filter1, setfilter1] = useState([])
     let [filter2, setfilter2] = useState([])
-    let [filter3, setfilter3] = useState("")
-    let [filter4, setfilter4] = useState("")
-    let [filter5, setfilter5] = useState("")
-    let filterpush = []
-    let arr = []
-    let attrs= []
-    useEffect(()=>{
-        fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
-        .then(res=>res.json())
-        .then(json=>{setsystemarr(json); setsystemarr2(json)})
 
+    let [count, setcount] = useState(11)
+    let [page, setpage] = useState(0)
+    let [page1, setpage1] = useState(0)
+    let [page2, setpage2] = useState(0)
+    let [page3, setpage3] = useState(0)
+    let [page4, setpage4] = useState(0)
+    let langarr
+    let arry = [];
+    let data = {data:[]}
+
+    useEffect(()=>{
+
+      langarr = param.count.split("-")
+
+    },[param.count])
+
+    useEffect(()=>{
+
+      rendernormal()
     },[])
+
+    useEffect(()=>{
+
+      rerenderprods2()
+    },[count])
+    useEffect(()=>{
+
+      rerenderprods2()
+    },[systemarr])
+
     function rendernormal(){
-      fetch('https://squid-app-9h43v.ondigitalocean.app/api/systems?filters[language][$eq]='+props.language.toLowerCase())
+      fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+langarr[0]+'-projects?pagination[page]='+1+'&pagination[pageSize]=100')
       .then(res=>res.json())
-      .then(json=>setsystemarr(json)).then(()=>rerenderprods2())
-    }
-    useEffect(()=>{
-      console.log(filter1)
-      filterattrs()
-    },[filter1])
-    useEffect(()=>{
-      console.log(filter2)
-      gofilter()
-    },[filter2])
-    function filterattrs(){
-      function onlyUnique(value, index, self) {
-        return self.indexOf(value) === index;
-      }
-      if(filter1){
-      var unique = filter1.filter(onlyUnique);
-      setfilter2(unique)}else{
-        rendernormal()
-      }
-    }
-    function gofilter(){
-      let arr
-      if(filter2){
-        if(filter2.length == 1){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0])       
-           })
-           let val = {data:arr}
-           setsystemarr(val)
-        }
-        if(filter2.length == 2){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])      
-           })
-           let val = {data:arr}
-           setsystemarr(val)
-
-        }
-        if(filter2.length == 3){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2])         
-           })
-          let val = {data:arr}
-           setsystemarr(val)
-        }
-        if(filter2.length == 4){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2])|| item.attributes.filter.includes(filter2[3])             
-           })
-          let val = {data:arr}
-           setsystemarr(val)
-        }
-        if(filter2.length == 5){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
-            || item.attributes.filter.includes(filter2[4])            
-           })
-          let val = {data:arr}
-           setsystemarr(val)
-        }
-        if(filter2.length == 6){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1]) 
-             || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3]) 
-              || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])              
-           })
-          let val = {data:arr}
-           setsystemarr(val)
-        }
-        if(filter2.length == 7){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
-            || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])    
-            || item.attributes.filter.includes(filter2[6])               
-           })
-          let val = {data:arr}
-           setsystemarr(val)
-        }
-        if(filter2.length == 8){
-          arr = systemarr2.data.filter(function(item){
-            return  item.attributes.filter.includes(filter2[0]) || item.attributes.filter.includes(filter2[1])  
-            || item.attributes.filter.includes(filter2[2]) || item.attributes.filter.includes(filter2[3])  
-            || item.attributes.filter.includes(filter2[4]) || item.attributes.filter.includes(filter2[5])    
-            || item.attributes.filter.includes(filter2[6]) || item.attributes.filter.includes(filter2[7])                
-           })
-          let val = {data:arr}
-           setsystemarr(val)
-        }
-      }
+      .then(json=>{setsystemarr(json);console.log(json)}).then(()=>rerenderprods2())
     }
 
+
+    function loadpage2(){
+      fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+langarr[0]+'-projects?pagination[page]='+2+'&pagination[pageSize]=12')
+      .then(res=>res.json())
+      .then(json=>{setsystemarr(json);console.log(json)}).then(()=>rerenderprods2())
+    }
+    function loadpage3(){
+      fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+langarr[0]+'-projects?pagination[page]='+2+'&pagination[pageSize]=12')
+      .then(res=>res.json())
+      .then(json=>{setsystemarr(json);console.log(json)}).then(()=>rerenderprods2())
+    }
+    function loadpage4(){
+      fetch('https://squid-app-9h43v.ondigitalocean.app/api/'+langarr[0]+'-projects?pagination[page]='+2+'&pagination[pageSize]=12')
+      .then(res=>res.json())
+      .then(json=>{setsystemarr(json);console.log(json)}).then(()=>rerenderprods2())
+    }
+    
    function rerenderprods2(attrib,idd){
-      if(document.getElementById(idd).checked){
-         setfilter1(filter1 =>[...filter1,attrib])
-      }else{
-        filter1.forEach((element, index) => {
-          if(element == idd){
-            let arr = filter1.filter(
-              function(item){
-                if(!item.match(idd)){
-                  return item
-                }
-              }
-            )
-            setfilter1(arr)
-            console.log(arr)
-            if(arr.length == 0){
-              rendernormal()
-            }
-          }
-        });
-      }
+    if(systemarr.data.length > 0){
+
+
+
+    for (let i = 0; i <= count; i++) {
+
+      try{    
+        if(systemarr.data[i]){arry.push(systemarr.data[i])}
+        }
+      catch{}
+  
+    }
+    
+    let imv = {data:[page,arry]}
+    console.log(imv)
+    setsystemarr2(imv)
+    }else{console.log("not yet")}
+
    }
    function loadsystem(prop){
     console.log(prop)
-    let systemurl = "/"+param.count+"/systems/"+prop
+    let systemurl = "/"+param.count+"/projects/"+prop
     window.location.replace(systemurl)
    }
 
+   function styleadd(index){
+    let ele = document.querySelector(".statss"+index)
+    console.log(ele)
+    //document.querySelector(".statss"+index).style = "grid-area:1/1/2/2;"
+   }
 
+   function rerendering(){
+    if(systemarr2.data.length > 0){
+      return(
+        <>
+        {
+        systemarr2.data[1].map((statss, index) => (
+          <>
+          
+            <a  id="proj-links" className={"statss"+index} href={"/"+param.count+"/projects/"+statss.attributes.titel1}><img className='project-img' src ={statss.attributes.image1}/><div className='proj-links-inner'><p>{statss.attributes.titel3}</p></div></a>
+            {styleadd(index)}
+
+          </>
+           ))
+          }
+          </>
+      )
+    }else{
+      return(
+        <>
+        </>
+      )
+
+    }
+   }
+
+
+   function countmax(){
+    setcount(count = count + 12)
+    if(count > systemarr.data.length){
+      setcount(systemarr.data.length)
+    }
+   }
   return (
     <>
     <div>Systemblock</div>
 
     <h1>{props.lange}</h1>
-    <div className='System-Wrapper'>
-    <div className='System-Filter'>
+    <div className='Projects-Wrapper'>
+   <div><h2 className='Projects-head'>Referenzen & Inspirationen</h2></div>
+   <div className='Projects-text'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+    <div className='Projects-Filter'>
       <h3>Filter:</h3>
 
-      <p>Result(s):{systemarr.data.length}</p>
+      <p>Result(s):{"systemarr.data.length"}</p>
       <div className='System-Filter-Block'>
         <h3>Geländertyp: </h3>
         <br />
@@ -183,58 +161,19 @@ function Projectblock(props) {
       </div>
 
 
-      <div className='System-Filter-Block'>
-
-      <label class="container">
-          <input id="bodenglasklemmen" type="checkbox" onChange={()=>rerenderprods2("bodenglasklemmen", "bodenglasklemmen")}  />
-          <span class="checkmark"></span> Bodenglasklemmen
-        </label>
-
-        <label class="container">
-          <input id="bodenprofile" type="checkbox" onChange={()=>rerenderprods2("bodenprofile", "bodenprofile")}  />
-          <span class="checkmark"></span> Bodenprofile
-        </label>
-
-        <label class="container">
-          <input id="franzoesischebalkone" type="checkbox" onChange={()=>rerenderprods2("franzoesischebalkone", "franzoesischebalkone")}  />
-          <span class="checkmark"></span> Französische Balkone
-        </label>
-
-        <label class="container">
-          <input id="gelaenderpf" type="checkbox" onChange={()=>rerenderprods2("gelaenderpf", "gelaenderpf")}  />
-          <span class="checkmark"></span> Geländerpfosten
-        </label>
-
-        <label class="container">
-          <input id="glassadapter" type="checkbox" onChange={()=>rerenderprods2("glassadapter", "glassadapter")}  />
-          <span class="checkmark"></span> Glassadapter
-        </label>
-
-      </div>
       
     </div>
-    <div className='System-cards'>
+    <div className='Projects-image-cards'>
     {
-          systemarr.data.map((statss, index) => (
-            <>
-              <div className='System-card'>
-                <div className='System-card-img'> 
-                <img src={statss.attributes.img2} />
-                </div>
-                <div className='Systems-description'>
-                 <h2>{statss.attributes.titel}</h2>
-                 <p className='Systems-attr1'>{statss.attributes.details.data[0][1]}</p>
-                 <p className='Systems-attr2'>{statss.attributes.details.data[3][1]}</p>
-                <button onClick={()=>loadsystem(statss.attributes.titel)}>READ MORE</button>
-                 </div>
-              </div>
-
-            </>
-             ))
+        rerendering()
       }
     </div>
+
+    <div className='morebtn1'><div></div><div className='morebtn-btn'><button onClick={()=>{countmax(); rerenderprods2()}}>More Projects</button>
+      </div></div>
      </div>
-  
+     
+ 
     </>
   )
 }

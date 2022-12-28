@@ -17,16 +17,22 @@ function Header(props) {
     const [langoption, setlangoption] = useState("eng")
     const [headwords, setheadwords] =useState([])
     const [Productword, setProductword] =useState("")
+    const [paramscount, setparamscount] =useState("en")
     const [SearchWordLe, setSearchWordLe] =useState()
     let [Docsword, setDocsword] =useState("")
     const [country, setcountry] =useState()
+    let params = useParams()
     const [headwordsger, setheadwordsger] = useState([
         "Große Auswahl", "Schnelle Lieferung","Höchste Qualität", "Maximale Sicherheit","Fragen?Rufen Sie uns am:02822-915-69-0", "Benutzername", "Passwort", "Anmelden",
-        "Suchen","PRODUKTE", "SYSTEME", "PROJEKTE", "KONFIGURATOR", "SERVICE", "Ausloggen"
+        "Suchen","SORTIMENT", "KONFIGURATOR", "INSPIRATION", "ÜBER UNS", "SERVICE", "Ausloggen","PRODUKT SUPPORT", "KONTAKT"
     ])
+
+
+
+
     const [headwordseng, setheadwordseng] = useState([
         "Wide System Range", "Quick Delivery","Top Quality Products", "Safety Promised","Questions? Call +1 714 259 1372", "Username", "Password", "Sign in",
-        "Search","PRODUCTS", "SYSTEMS", "PROJECTS", "CONFIGURATOR", "SERVICE", "Log out"
+        "Search","ASSORTMENT", "CONFIGURATOR", "INSPIRATION", "ABOUT US", "SERVICE", "Log out","PRODUCT SUPPORT", "CONTACT"
     ])
 
     useEffect(()=>{
@@ -43,15 +49,13 @@ function Header(props) {
     },[])
 
     useEffect(()=>{
-       console.log(extracon)
 
-    },[extracon])
+
+    },[])
 
 
     function renderrest(){
-        console.log("RENDER")
-        console.log("extra")
-        console.log(extracon)
+
         if(extracon.data.length >0 ){
           
             return(
@@ -95,7 +99,7 @@ function Header(props) {
             window.location.replace("/"+splitarr[0]+"-"+splitarr[1])
         }
     }
-    const params =  useParams()
+
     
     const Searching = (event) => {
         const searchWord = event.target.value;
@@ -458,6 +462,15 @@ function myscrollFunction() {
   }
 }
 
+let lanarr = [];
+useEffect(()=>{
+
+    lanarr = params.count.split("-")
+    console.log(lanarr)
+    setparamscount(lanarr[0])
+
+
+},[])
 
   return (
    
@@ -472,7 +485,7 @@ function myscrollFunction() {
             <a href={mainpageurl}><img src='https://www.q-railing.com/files/logo-q-railing.png' width="101"/></a>
             </div>
             <div className='Header-mid-search'>
-                <input on onFocus={()=>showsuggest()} onBlur={()=>hidesuggest()}onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
+                <input placeholder={"Search now.."}on onFocus={()=>showsuggest()} onBlur={()=>hidesuggest()}onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>
                 <div className='search-suggest' id="suggest">
                     {renderSuggest()}
                 
@@ -483,7 +496,7 @@ function myscrollFunction() {
             <ul className='Header-user-nav'>
             <li>
             <button className='Langselect' onClick={()=>togglelangselect()}>
-            <img src={globe} width="32" height="32"/> <span>{props.language}</span>
+            <img src={globe} width="32" height="32"/> <span>{paramscount}</span>
             </button>
             {menu()}
             </li><li id="logintab"><img src="https://static.vecteezy.com/system/resources/thumbnails/007/033/146/small/profile-icon-login-head-icon-vector.jpg" width="32" height="32"/>{loginstate()}</li>
@@ -491,7 +504,9 @@ function myscrollFunction() {
             </div>
         </div>
         <div className='Header-bottom'>
-            <ul><li><a href={mainpageurl}><img width={24} src={home}/></a></li><li ><a href={systemurl}>{headwords[10]}</a></li><li><a href={projectsurl}>{headwords[11]}</a></li><li><a href={configurl}>{headwords[12]}</a></li><li><a href={serviceurl}>{headwords[13]}</a></li></ul>
+            <ul><li ><a id="sortimentlink" href={systemurl}>{headwords[9]} <p>❮</p></a></li><li ><a href={systemurl}>{headwords[10]}</a></li>
+            <li><a href={projectsurl}>{headwords[11]}</a></li><li><a href={configurl}>{headwords[12]}</a></li>
+            <li><a href={serviceurl}>{headwords[13]}</a></li><li><a href={serviceurl}>{headwords[15]}</a></li><li><a href={serviceurl}>{headwords[16]}</a></li></ul>
         </div>
     </div>
     </div>

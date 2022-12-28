@@ -38,7 +38,9 @@ function Konfigurator(props) {
         
     },[])
 
-
+    useEffect(()=>{    
+        
+    },[val3])
     function showitems(propers){
         if(document.getElementById(propers).classList.contains("hidden")){
             document.getElementById(propers).classList.remove("hidden")
@@ -259,7 +261,7 @@ function Fetchee(){
         <div className='Config-measure'>
             <div className='Config-measure-wrap'>
             <div className='Config-measure-x hidden'><div className='Config-measure-input-div'><p>{val1}mm</p><h6>Ihre Eingabe:</h6><input type="text" onChange={(e)=>{setval1(e.target.value);console.log(val1)}}value={val1}/></div></div>
-            <div><img id="bigimg" src={bgimg} width="300"/></div>
+            <div id="imgmove"><img id="bigimg1" src="https://www.q-railing.com/files/half.png?t=1671803992" width="140"/><img id="bigimg2" src="https://www.q-railing.com/files/mini.png?t=1671803992" width="20"/><img id="bigimg3" src="https://www.q-railing.com/files/ohalf.png?t=1671803992" width="140"/></div>
             <div className='Config-measure-y hidden'><div className='Config-measure-input-div'><p>{val2}mm</p><h6>Ihre Eingabe:</h6><input type="text" onChange={(e)=>{setval2(e.target.value);console.log(val1)}}value={val2}/></div></div>
             </div>
        

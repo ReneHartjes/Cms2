@@ -51,43 +51,47 @@ function Mainpagetext(props) {
         )
       }
     }
-    
-  return (
-    <div className='Mainpagetext-wrap'>
-      <div className='Mainpagetext-inner'>
-         {lollol()}
-      </div>
-      <div className='Mainpagetext-icons'>
+
+
+
+  function renderimgs(){
+
+
+    if(infotext.data.length > 0){
+      return(
+        <>
+        
+        <div className='Mainpagetext-icons'>
         <div></div>
       <div className='Mainpagetext-icons-card'>
         <img src="https://www.q-railing.com/files/phoneicon.png?t=1671533104" width={60}/>
-        <h5>Persönliche Beratung</h5>
-        <p>Telefon, Whatsapp und Email</p>
+        <h5>{infotext.data[0].attributes.details.data[0][0]}</h5>
+        <p>{infotext.data[0].attributes.details.data[0][1]}</p>
       </div>
       <div className='Mainpagetext-icons-card'>
         <img src="https://www.q-railing.com/files/mailicon.png?t=1671532185" width={60}/>
-        <h5>Verfügbarkeit</h5>
-        <p>Unserer Produkte</p>
+        <h5>{infotext.data[0].attributes.details.data[1][0]}</h5>
+        <p>{infotext.data[0].attributes.details.data[1][1]}</p>
       </div>
       <div className='Mainpagetext-icons-card'>
         <img src="https://www.q-railing.com/files/mailicon.png?t=1671532185" width={60}/>
-        <h5> > 6 Mio</h5>
-        <p>Artikel auf Lager</p>
+        <h5>{infotext.data[0].attributes.details.data[2][0]}</h5>
+        <p>{infotext.data[0].attributes.details.data[2][1]}</p>
       </div>
       <div className='Mainpagetext-icons-card'>
         <img src="https://www.q-railing.com/files/phoneicon.png?t=1671533104" width={60}/>
-        <h5>Kurze Versandzeiten</h5>
-        <p>i.d.R. 24h Lieferung</p>
+        <h5>{infotext.data[0].attributes.details.data[3][0]}</h5>
+        <p>{infotext.data[0].attributes.details.data[3][1]}</p>
       </div>
       <div className='Mainpagetext-icons-card'>
         <img src="https://www.q-railing.com/files/mailicon.png?t=1671532185" width={60}/>
-        <h5>CE-Zertifizierung</h5>
-        <p>nach DIN EN 1090</p>
+        <h5>{infotext.data[0].attributes.details.data[4][0]}</h5>
+        <p>{infotext.data[0].attributes.details.data[4][1]}</p>
       </div>
       <div className='Mainpagetext-icons-card'>
         <img src="https://www.q-railing.com/files/phoneicon.png?t=1671533104" width={60}/>
-        <h5>Geprüfte Qualität</h5>
-        <p>durch Materialkontrolle</p>
+        <h5>{infotext.data[0].attributes.details.data[5][0]}</h5>
+        <p>{infotext.data[0].attributes.details.data[5][1]}</p>
       </div>
       <div></div>
       </div>
@@ -95,14 +99,28 @@ function Mainpagetext(props) {
 
       <div className='Mainpagetext-btns'>
       <button id="aboutbtn">
-        More about us
+      {infotext.data[0].attributes.titel2}
       </button>
       <button id="productsbtn">
-       About Product quality
+      {infotext.data[0].attributes.titel3}
       </button>
       </div>
+        </>
+      )
+    }else{
+      return(
+        <></>
+      )
+    }
 
-     
+  }
+    
+  return (
+    <div className='Mainpagetext-wrap'>
+      <div className='Mainpagetext-inner'>
+         {lollol()}
+      </div>
+        {renderimgs()}
     </div>
   )
 }

@@ -18,8 +18,11 @@ import Productpage from './components/Productpage';
 import Projectpage from './components/Projectpage';
 import Konfigurator from './components/Konfigurator';
 import KonfiguratorDetail from './components/KonfiguratorDetail';
+import ProjectDetail from './components/ProjectDetail';
+import Dbip from './components/includes/Dbip';
 
 function App() {
+  let[countryy, setcountryy] = useState()
   const [context, setcontext] = useState()
   const [globallang, setgloballang] = useState("Eng")
   const [globalcountry, setglobalcountry] = useState("United States")
@@ -40,6 +43,12 @@ function App() {
 
   }
 
+  useEffect(()=>{
+    //fetch('http://api.db-ip.com/v2/free/self')
+    //.then(res=>res.json())
+    //.then(json=>{setcountryy(json);console.log(json)})
+  },[])
+
 
 
   return (
@@ -49,9 +58,9 @@ function App() {
     <Routes>
 
 
-
-
-    <Route path="/" element={<Navigate to="/de-de"/>}  />
+  
+    <Route path="/" element={<Dbip></Dbip>}  />
+  
 
 
     <Route path="/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
@@ -65,6 +74,7 @@ function App() {
     <Route path="/:count/systems" element={<Systems lang={setlang} language={globallang}></Systems>} />
     <Route path="/:count/service" element={<Service lang={setlang} language={globallang}></Service>} />
     <Route path="/:count/projects" element={<Projectpage lang={setlang} language={globallang}></Projectpage>} />
+    <Route path="/:count/projects/:projectname" element={<ProjectDetail lang={setlang} language={globallang}></ProjectDetail>} />
     <Route path="/:count/configurator" element={<Konfigurator lang={setlang} language={globallang}></Konfigurator>} />
     <Route path="/:count/configurator/:title" element={<KonfiguratorDetail lang={setlang} language={globallang}></KonfiguratorDetail>} />
     </Routes>

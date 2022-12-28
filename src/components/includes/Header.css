@@ -55,6 +55,9 @@
 .Header-mid-search input{
     width: 55%;
     height: 42px;
+    border-radius: 42px;
+    padding-left: 42px;
+    border: 1px solid #005094;
 
 }
 .search-suggest{
@@ -78,8 +81,14 @@
 
 .Header-bottom ul {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
     
+}
+.Header-bottom ul li a{
+    color: #333
 }
 .Header-bottom ul li{
     margin: 10px;
@@ -87,6 +96,8 @@
     display: flex;
     align-items: center;
     font-size: 18px;
+    font-weight: 600;
+
 
 }
 .loginpopup{
@@ -242,12 +253,21 @@ text-align: left;
     background-color: #005094;
     width: 42px;
     height: 42px;
+    border-radius: 0% 50% 50% 0%;
+    margin-left: -42px;
+    border: 0px;
+}
+#search:hover{
+    transform: scale(1.01);
+    transition: 0.2s;
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 #search img{
     
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 50%;
 }
 
 .Search-Products a, .Search-Documents a{
