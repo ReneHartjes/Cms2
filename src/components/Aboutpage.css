@@ -1,0 +1,30 @@
+.about-Banner {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+.about-Banner-wrap{
+    background-color: #005094 ;
+    color:white;
+    margin-top: 0px;
+}
+.about-banner-head{
+    font-size: 48px;
+    font-weight: 900;
+    color:white;
+}
+
+.about-banner-head span, .about-banner-head span p{    color:white; }
+
+.about-banner-head{
+    line-height: 1;
+}
+.about-banner-head span p{
+    margin-top: 30px;
+}
+.goup{
+    margin-top: -10px;
+}
+
+.about-Banner-wrap {
+    max-width: 1170px;
+}

@@ -64,17 +64,28 @@ function Fetchee(){
     <div className='BannerWarp'>
     
     </div>
-    <div className='page-wrap'>
+    <div className='page-wrap Config-page-wrap'>
+        <div className='Config-Headlines'>
+        <h2>Welcome to our Configurator(s)</h2>
+        <br />
+        <h4>You can either Configure a System</h4>
+        <h4>or you find the System that fits your requirements</h4>
+        </div>
     <div className='Config-cards'>
         
-        <div>
-            <img scr=""></img>
-            <a href={"/"+params.count+"/configurator/glass"}>Glass</a>
+        <div className='Config-card'>
+            <a href={"/"+params.count+"/configurator/glass"}><img src="https://cdn-icons-png.flaticon.com/512/5984/5984464.png" width={"200px"}></img>
+            Konfigurator</a>
+        </div>
+
+        <div className='Config-card'>
+            <a href={"/"+params.count+"/configurator/glass"}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLtvqCVDdvseo1j-Eq9KkKBInNgyIMKnhb_A&usqp=CAU" width={"200px"}></img>
+            Systemfinder</a>
         </div>
     </div>
 
 
-    configurator:{params.title}
+   
 
     <div className='Config-selects'>
        

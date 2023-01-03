@@ -504,8 +504,8 @@ useEffect(()=>{
             </div>
         </div>
         <div className='Header-bottom'>
-            <ul><li ><a id="sortimentlink" href={systemurl}>{headwords[9]} <p>❮</p></a></li><li ><a href={systemurl}>{headwords[10]}</a></li>
-            <li><a href={projectsurl}>{headwords[11]}</a></li><li><a href={configurl}>{headwords[12]}</a></li>
+            <ul><li ><a id="sortimentlink" href={systemurl}>{headwords[9]} <p>❮</p></a></li><li ><a href={configurl}>{headwords[10]}</a></li>
+            <li><a href={projectsurl}>{headwords[11]}</a></li><li><a href={"/"+params.count+"/about"}>{headwords[12]}</a></li>
             <li><a href={serviceurl}>{headwords[13]}</a></li><li><a href={serviceurl}>{headwords[15]}</a></li><li><a href={serviceurl}>{headwords[16]}</a></li></ul>
         </div>
     </div>

@@ -15,9 +15,16 @@ function Konfigurator(props) {
   let [val1, setval1] = useState(1000)
   let [val2, setval2] = useState(1000)
   let [val3, setval3] = useState(2500)
+  let[xpos, setxpos]= useState()
+  let[ypos, setypos] = useState()
+    let linecount = 0;
+    let[linearr, setlinearr] = useState([])
+  let[lastx,setlastx] = useState()
+  let[lasty, setlasty] = useState()
+  let [canvasrender,setcanvasrender] = useState(false)
   let [dataarr, setdataarr] = useState({data:[]})
   let [stepcount, setstepcount] = useState(1)
-
+    let lines = [];
   let [form, setform] = useState()
   let [line, setline] = useState()
   let [underg, setunderg] = useState()
@@ -39,8 +46,42 @@ function Konfigurator(props) {
     },[])
 
     useEffect(()=>{    
-        
-    },[val3])
+        setcanvasrender(true)
+        rendercanvas()
+    },[])
+
+    useEffect(()=>{    
+console.log(xpos)
+console.log(ypos)
+
+        rectify(xpos,ypos)
+
+    },[xpos, ypos])
+
+
+
+    useEffect(()=>{
+
+        setlabels()
+
+    },[linearr])
+
+
+    function setlabels(){
+        for (let i = 0; i < linearr.length; i++) {
+            
+            if(i > 2){
+                i = 2
+            }
+            document.getElementById("SetMeasure"+[i+1]).style.left = linearr[i][0] + "px"
+            document.getElementById("SetMeasure"+[i+1]).style.top = linearr[i][1] + "px"
+        }
+    }
+
+    useEffect(()=>{    
+        setcanvasrender(true)
+        canvasdraw()
+    },[document.getElementById("measurementscanvas")])
     function showitems(propers){
         if(document.getElementById(propers).classList.contains("hidden")){
             document.getElementById(propers).classList.remove("hidden")
@@ -50,6 +91,76 @@ function Konfigurator(props) {
             document.getElementById(propers).classList.add("hidden")
         }
         
+    }
+
+    function rectify(x, y){
+
+        let xs = x
+        let ys = y
+
+        if(x>0 && x < 50){
+            setxpos(25)
+        }
+        
+        if(x>50 && x < 100){
+            setxpos(75)
+        }
+        if(x>100 && x < 150){
+            setxpos(125)
+        }
+        if(x>150 && x< 200){
+            setxpos(175)
+        }
+        if(x>200 && x< 250){
+            setxpos(225)
+        }
+        if(x>250 && x < 300){
+            setxpos(275)
+        }
+        if(x>300 && x < 350){
+            setxpos(325)
+        }
+        if(x>350 && x < 400){
+            setxpos(375)
+        }
+        if(x>400 && x < 450){
+            setxpos(425)
+        }
+        if(x>450 && x < 500){
+            setxpos(475)
+        }
+        if(x>500 && x < 550){
+            setxpos(525)
+        }
+        if(x>550 && x < 600){
+            setxpos(575)
+        }
+
+        if(y>0 && y < 50){
+            setypos(25)
+        }
+        
+        if(y>50 && y < 100){
+            setypos(75)
+        }
+        if(y>100 && y < 150){
+            setypos(125)
+        }
+        if(y>150 && y< 200){
+            setypos(175)
+        }
+        if(y>200 && y< 250){
+            setypos(225)
+        }
+        if(y>250 && y < 300){
+            setypos(275)
+        }
+        if(y>300 && y < 350){
+            setypos(325)
+        }
+        if(y>350 && y < 400){
+            setypos(375)
+        }
     }
 
     function nexter(intend){
@@ -99,13 +210,10 @@ function Konfigurator(props) {
                 document.querySelector(".railingtop").classList.remove("hidden")
             } 
         }
-
-
         if(intend == "rt"){
             if(document.querySelector(".underchoice").classList.contains("hidden") == true){
                 document.querySelector(".underchoice").classList.remove("hidden")
             }
-            
         }
         if(intend == "cl"){
             if(document.querySelector(".underchoice").classList.contains("hidden") == true){
@@ -221,13 +329,9 @@ function Fetchee(){
 
         return(
             <>
-            <div className='Shape' id="shape">
-                <button onClick={()=>{showbigitem("i");setform("i")}}><img src="https://www.q-railing.com/files/i-shape-v1-thumb.png?t=1671606824"/></button>
-                <button onClick={()=>{showbigitem("u");setform("u")}}><img src="https://www.q-railing.com/files/u-shape-v1-thumb.png?t=1671606824"/></button>
-                <button onClick={()=>{showbigitem("l");setform("l")}}><img src="https://www.q-railing.com/files/l-shape-v1-thumb.png?t=1671606824"/></button>
-            </div>
+               
+                <h3>Please sketch your Project-Area below in the Box</h3>
 
-           
             </>
         )
        
@@ -242,7 +346,153 @@ function Fetchee(){
 
 }
 
+
+function canvasdraw(){
+    console.log("log")
+    if(canvasrender == true){
+    let canvass = document.getElementById("measurementscanvas")
+    if (!canvass.getContext) {
+        return;
+    }else{
+    let cancontext = canvass.getContext("2d")
+    var rect = canvass.getBoundingClientRect();
+    cancontext.beginPath();
+    cancontext.stroke();
+    cancontext.lineWidth = 5;
+    cancontext.closePath();}
+    if(linearr.length > 2){
+        return(
+            <></>
+        )
+    }
     
+    canvass.addEventListener("click", function (evt) {
+        var mousePos = getMousePos(canvass, evt);
+        setxpos(mousePos.x)
+        setypos(mousePos.y)
+ 
+        console.log(mousePos.x + ',' + mousePos.y + "CLICKER");
+        rectify(mousePos.x, mousePos.y)
+    }, false);
+
+    if(xpos > 0){
+        let canvass = document.getElementById("measurementscanvas")
+        let cancontext = canvass.getContext("2d")
+        cancontext.beginPath();
+        
+        cancontext.arc(xpos, ypos, 20, 0, 2 * Math.PI);
+
+        if(lastx){
+            cancontext.moveTo(xpos, ypos);
+            cancontext.lineTo(lastx, lasty);
+          
+
+      
+            let changemaxx = xpos - lastx
+            let changemaxy = ypos - lasty
+            
+            let diffx = Math.abs(changemaxx)
+            let diffy = Math.abs(changemaxy)
+
+           console.log(diffy, diffx)
+
+            let labelposx = Math.abs(lastx - (diffx/2))
+            let labelposy = Math.abs(lasty + (diffy/2))
+
+            
+
+            console.log(lastx,xpos )
+            console.log(lastx,xpos )
+            console.log(lastx,xpos )
+            console.log(lasty,ypos )
+            console.log(lasty,ypos )
+            console.log(lasty,ypos )
+            
+            let finallabelx= Math.abs(changemaxx)/2
+            let finallabely= Math.abs(changemaxx)/2
+
+
+            setlinearr(linearr =>[...linearr,[labelposx,labelposy]])
+
+            setlabels()
+            console.log(linearr)
+            console.log(linearr)
+            console.log(linearr)
+            console.log(linearr)
+            console.log(linearr)
+
+            console.log(diffx)
+            console.log(diffy)
+
+            console.log(changemaxx + " +++++++++" + changemaxy)
+        }
+
+
+
+        setlastx(xpos)
+        setlasty(ypos)
+        cancontext.stroke()
+    }
+}
+}
+
+
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+
+function verifylines(){
+
+
+    if( document.querySelector(".Config-measure-ov").classList.contains("hidden")){
+        document.querySelector(".Config-measure-ov").classList.remove("hidden")
+       }
+    for (let i = 0; i < linearr.length; i++) {
+        
+       if( document.getElementById("tablemeasure"+i).classList.contains("hidden")){
+        document.getElementById("tablemeasure"+i).classList.remove("hidden")
+       }
+    }
+}
+
+function rendercanvas(){
+    if(canvasrender == true){
+    return(
+        <>        <div className='canvasdiv'>
+                 <canvas onClick={()=>canvasdraw()}id="measurementscanvas" width="600" height="400"></canvas>
+
+                 <div id='SetMeasure1'>
+                    <input type="text" placeholder='in mm' onChange={(e)=>{setval1(e.target.value);}} onBlur={()=>{if(document.querySelector(".Config-measure-x-menu").classList.contains("hidden"))
+                 {document.querySelector(".Config-measure-x-menu").classList.remove("hidden")}}}/>
+                    </div>    
+                <div id='SetMeasure2'>
+                    <input type="text" placeholder='in mm'onChange={(e)=>{setval2(e.target.value);}}/>
+                    </div>    
+                <div id='SetMeasure3'>
+                    <input type="text" placeholder='in mm'onChange={(e)=>{setval3(e.target.value);}}/>
+                    </div>     
+                    
+                 </div>  
+                 
+
+                 <button onClick={()=>{verifylines()}}>Schritt 2</button>   
+        </>
+    )}else{
+        return(
+            <></>
+        )
+    }
+}
+
+
+function continuedrawing(){
+
+}
+
   return (
   <>
     <Header lang={langset} language={props.language}></Header>
@@ -258,26 +508,31 @@ function Fetchee(){
        
 
         {Fetchee()}
+   
         <div className='Config-measure'>
             <div className='Config-measure-wrap'>
             <div className='Config-measure-x hidden'><div className='Config-measure-input-div'><p>{val1}mm</p><h6>Ihre Eingabe:</h6><input type="text" onChange={(e)=>{setval1(e.target.value);console.log(val1)}}value={val1}/></div></div>
-            <div id="imgmove"><img id="bigimg1" src="https://www.q-railing.com/files/half.png?t=1671803992" width="140"/><img id="bigimg2" src="https://www.q-railing.com/files/mini.png?t=1671803992" width="20"/><img id="bigimg3" src="https://www.q-railing.com/files/ohalf.png?t=1671803992" width="140"/></div>
+            <div id="imgmove"><img id="bigimg" src={bgimg} width="300"/></div>
             <div className='Config-measure-y hidden'><div className='Config-measure-input-div'><p>{val2}mm</p><h6>Ihre Eingabe:</h6><input type="text" onChange={(e)=>{setval2(e.target.value);console.log(val1)}}value={val2}/></div></div>
             </div>
        
         </div>
+
+        {rendercanvas()}
+
+   
         <div className='Config-measure-z hidden'><div className='Config-measure-input-div'><p>{val3}mm</p><h6>Ihre Eingabe:</h6>
         <input type="text" onChange={(e)=>{setval3(e.target.value);console.log(val3)}}value={val3}/>
         </div></div>
         <div className='Config-measure-ov hidden'>
             <table>
-                <tr className='Config-measure-x-menu hidden'>
+                <tr id="tablemeasure0" className='Config-measure-x-menu hidden'>
                     <td>Ihre länge 1: </td><td className='Config-measure-table-val'>{val1} mm</td>
                 </tr>
-                <tr className='Config-measure-y-menu hidden'>
+                <tr id="tablemeasure1" className='Config-measure-y-menu hidden'>
                     <td>Ihre länge 2: </td><td className='Config-measure-table-val'> {val2} mm</td>
                 </tr>
-                <tr className='Config-measure-z-menu hidden'>
+                <tr id="tablemeasure2" className='Config-measure-z-menu hidden'>
                     <td>Ihre länge 3: </td><td className='Config-measure-table-val'> {val3} mm</td>
                 </tr>
             </table>
@@ -320,6 +575,7 @@ function Fetchee(){
 
   </div>  
   </div>
+
   <Footer></Footer>
   </>
     

@@ -115,3 +115,37 @@
 #bigimg3{
     
 }
+
+.canvasdiv{
+    position: relative;
+}
+
+#SetMeasure1{
+    position: absolute;
+    z-index: 100;
+    left: 0px;
+   
+}
+#SetMeasure2{
+    position: absolute;
+  
+}
+
+#SetMeasure1 input, 
+#SetMeasure2 input,
+ #SetMeasure3 input, 
+ #SetMeasure4 input{
+    width: 30px;
+}
+#SetMeasure3{
+    position: absolute;
+
+}
+#SetMeasure4{
+    position: absolute;
+
+}
+
+#measurementscanvas{
+    background-color: #ccc;
+}

@@ -6,6 +6,9 @@ import Footer from './includes/Footer';
 import Systemblock from './includes/Systemblock'
 import Projectblock from './includes/Projectblock'
 import BannerNew from './includes/BannerNew';
+import NewsBlog from './includes/NewsBlog';
+import Mainpagetext from './includes/Mainpagetext';
+import Newletterinvite from './includes/Newletterinvite';
 
 
 function Projectpage(props) {
@@ -87,8 +90,14 @@ function Projectpage(props) {
     </div>
     <div className='page-wrap'>
     <Projectblock></Projectblock>
+    <NewsBlog></NewsBlog>
+    
+
+
   </div>  
   </div>
+  <Mainpagetext></Mainpagetext>
+  <Newletterinvite></Newletterinvite>
   <Footer></Footer>
   </>
     

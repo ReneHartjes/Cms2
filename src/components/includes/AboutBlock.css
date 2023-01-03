@@ -1,0 +1,87 @@
+.About-Filter-Block{
+    display: flex;
+    flex-direction: column;
+   padding-right: 20px;
+}
+
+.About-Filter-Block button{
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px 10px 20px;
+    text-align: left;
+}
+
+.About-Filter-Block button:hover{
+    background-color: #005094;
+    color:white;
+    opacity: 0.9;
+   transition: 0.3; 
+
+   cursor: pointer;
+
+}
+
+.About-Content{
+    max-width: 860px;
+    width: 100%;
+    flex-basis: 80%;
+    margin-left: 85px;
+}
+
+.About-Wrap{
+    display: flex;
+}
+
+
+.about-unternehmen img, .about-vision img{
+    width: 100%;
+}
+.about-abteilung-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+}
+
+.About-Abteilung-Card{
+    width: 100%;
+    margin: 20px;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    box-shadow: 3px 5px 14px black;
+}
+
+.About-Abteilung-Card a{
+    text-decoration: none;
+    color: #333;
+}
+
+.About-Abteilung-Card p{
+    background: #005094;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    margin-top: 10px;
+    border-radius: 11px;
+}
+.About-Abteilung-Card h3{
+
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 800;
+}
+.About-Abteilung-Card:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+    opacity: 0.9;
+    cursor: pointer;
+}
+.about-header{
+    font-size: 28px;
+    font-weight: 800;
+}

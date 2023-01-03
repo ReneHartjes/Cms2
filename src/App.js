@@ -20,6 +20,7 @@ import Konfigurator from './components/Konfigurator';
 import KonfiguratorDetail from './components/KonfiguratorDetail';
 import ProjectDetail from './components/ProjectDetail';
 import Dbip from './components/includes/Dbip';
+import Aboutpage from './components/Aboutpage';
 
 function App() {
   let[countryy, setcountryy] = useState()
@@ -77,6 +78,8 @@ function App() {
     <Route path="/:count/projects/:projectname" element={<ProjectDetail lang={setlang} language={globallang}></ProjectDetail>} />
     <Route path="/:count/configurator" element={<Konfigurator lang={setlang} language={globallang}></Konfigurator>} />
     <Route path="/:count/configurator/:title" element={<KonfiguratorDetail lang={setlang} language={globallang}></KonfiguratorDetail>} />
+
+    <Route path="/:count/about" element={<Aboutpage lang={setlang} language={globallang}></Aboutpage>} />
     </Routes>
     
     </Langcontext.Provider>
