@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import './Konfigurator.css'
 import Header from './includes/Header';
 import Footer from './includes/Footer';
+import Konfiguratoralpha from './Konfiguratoralpha';
 
 
 function Konfigurator(props) {
@@ -65,13 +66,13 @@ function Fetchee(){
     
     </div>
     <div className='page-wrap Config-page-wrap'>
-        <div className='Config-Headlines'>
+        <div className='Config-Headlines hidden'>
         <h2>Welcome to our Configurator(s)</h2>
         <br />
         <h4>You can either Configure a System</h4>
         <h4>or you find the System that fits your requirements</h4>
         </div>
-    <div className='Config-cards'>
+    <div className='Config-cards hidden'>
         
         <div className='Config-card'>
             <a href={"/"+params.count+"/configurator/glass"}><img src="https://cdn-icons-png.flaticon.com/512/5984/5984464.png" width={"200px"}></img>
@@ -90,7 +91,7 @@ function Fetchee(){
     <div className='Config-selects'>
        
 
-        {Fetchee()}
+       <Konfiguratoralpha> </Konfiguratoralpha>
     </div>
 
   </div>  

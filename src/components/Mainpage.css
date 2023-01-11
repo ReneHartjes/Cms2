@@ -101,3 +101,14 @@
 .BannerWarp{
     max-width: 1500px;
 }
+
+.prodsliderwrap{
+    display: flex;
+    justify-content: center;
+}
+.prodslider{
+    max-width: 1000px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

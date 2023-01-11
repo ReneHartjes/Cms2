@@ -482,7 +482,7 @@ useEffect(()=>{
         </div>
         <div className='Header-mid'>
             <div className='Header-logo'>
-            <a href={mainpageurl}><img src='https://www.q-railing.com/files/logo-q-railing.png' width="101"/></a>
+            <a href={mainpageurl}><img src='https://q-railing.s3.eu-central-1.amazonaws.com/icons/logo-q-railing.png' width="101"/></a>
             </div>
             <div className='Header-mid-search'>
                 <input placeholder={"Search now.."}on onFocus={()=>showsuggest()} onBlur={()=>hidesuggest()}onChange={Searching} type="text"/><button id="search"><img src={lupe} /></button>

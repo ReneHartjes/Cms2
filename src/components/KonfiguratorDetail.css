@@ -145,7 +145,202 @@
     position: absolute;
 
 }
-
+.BannerWarp-config{
+    position: relative;
+    min-height: 800px;
+}
 #measurementscanvas{
+    background-color: #ccc;    
+}
+
+
+.choicediv0{
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50% , -50%) !important;
     background-color: #ccc;
+    width: 800px;
+    height: 200px;   
+    ;
+    display: flex;
+    justify-content: space-around;
+    animation: slide-up 0.5s !important;
+   
+}
+.choicediv3{
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50% , -50%) !important;
+    background-color: #ccc;
+    width: 800px;
+    height: 200px;   
+    ;
+    display: flex;
+    justify-content: space-around;
+    animation: slide-up 0.5s !important;
+   
+}
+
+
+
+.choicediv1{
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50% , -50%) !important;
+    background-color: #ccc;
+    width: 800px;
+    height: 200px;   
+    ;
+    display: flex;
+    justify-content: space-around;
+
+   
+}
+
+
+.choicediv2{
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50% , -50%) !important;
+    background-color: #ccc;
+    width: 800px;
+    height: 200px;   
+    ;
+    display: flex;
+    justify-content: space-around;  
+}
+
+
+.choicediv button, .choicediv2 button{
+    width: 100%;
+}
+.slidee{
+
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50% , -50%) !important;
+    background-color: #ccc;
+    width: 800px;
+    height: 200px;   
+    ;
+    display: flex;
+    justify-content: space-around;
+    
+    animation: 0.5s slide-up ease-in-out;
+    
+    
+}
+
+
+@keyframes slide-up {
+    from {
+        top: 1800px;
+    }
+    to {
+        top: 70%;
+
+    }
+  }
+
+.step1{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    flex-direction: column;
+}
+.project-choice{
+    display: flex;
+}
+.step1-header{
+    padding-bottom: 50px;
+}
+
+.project-choice div:first-child{
+        width: 300px;
+}
+
+.step1 button{
+    width: 250px;
+    height: 150px;
+    font-size: 32px;
+    margin-left: 30px;
+    background-color: #005094;
+    color:white;
+    box-shadow: 3px 7px 14px black;
+}
+
+.step1 button:hover{
+    transform: scale(1.1);
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Step-count{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+}
+
+.hrfill{
+    width: 14%;
+    margin-top: 25px;
+}
+.hrfillen{
+    width: 5%;
+    margin-top: 25px;
+}
+
+.Step-count button{
+    border-radius: 50%;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #005094;
+    color:white;
+    border: white 1px solid;
+    font-size: 28px;
+}
+
+.Step-count button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.Config-selects{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#confighead{
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    box-shadow: 3px 5px 11px black;
+}
+#confighead img{
+    margin-right: 50px;
+}
+
+.BannerWarp-config{
+    max-width: 1500px;
+}
+
+.active{
+    background-color: red !important;
 }

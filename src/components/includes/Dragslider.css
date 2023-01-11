@@ -1,0 +1,49 @@
+.product-card{
+    text-align: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+.product-card:hover{
+    transform:translateY(-10px);
+    transition: 0.3s;
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+
+.hidden{
+    display:none;
+}
+
+#banner-neu{
+    position: absolute;
+    background-color: #005094;
+    color:white;
+    padding-left: 20px;
+    padding-right: 30px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#banner-aktion{
+    position: absolute;
+    background-color: #07C1A1;
+    color:white;
+
+    padding-left: 20px;
+    padding-right: 20px;
+   font-size: 18px;
+   font-weight: 700;
+}
+
+#banner-promo{
+    position: absolute;
+    background-color: #E4225D;
+    color:white;
+
+    padding-left: 20px;
+    padding-right: 20px;
+   font-size: 18px;
+   font-weight: 700;
+}

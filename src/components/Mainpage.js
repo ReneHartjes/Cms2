@@ -13,6 +13,9 @@ import Newletterinvite from './includes/Newletterinvite';
 import Inspirations from './includes/Inspirations';
 import BannerNew from './includes/BannerNew'
 import Stats from './includes/Stats';
+import Dndslider from './includes/Dndslider';
+import Dragslider from './includes/Dragslider';
+import Compare from './includes/Compare';
 
 
 
@@ -43,16 +46,22 @@ function Mainpage(props) {
     <div className='page'>
     <div className='BannerWarp'>
     <BannerNew></BannerNew>
+
+    
     </div>
     <div className='page-wrap'>
- 
+    <br />
+    <br />
    
-  
   </div>  
   </div>
+
   <Mainpagetext language={props.language}></Mainpagetext>
   <Stats></Stats>
+
   <Inspirations></Inspirations>
+  <div className='prodsliderwrap'><div className='prodslider'> <Dragslider></Dragslider></div></div>
+  <Compare></Compare>
   <Newletterinvite language={props.language}/>
   <Footer language={props.language}></Footer>
   </>

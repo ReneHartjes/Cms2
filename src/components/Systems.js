@@ -10,6 +10,7 @@ import Mainpagetext from './includes/Mainpagetext';
 import Bestseller from './includes/Bestseller';
 import Footer from './includes/Footer';
 import Systemblock from './includes/Systemblock'
+import Projectblock from './includes/Projectblock'
 
 
 function Systems(props) {
@@ -43,7 +44,11 @@ function Systems(props) {
     </div>
     <div className='page-wrap'>
     <Systemblock language = {props.language}></Systemblock>
+
   </div>  
+  <br /><br/><br/><br/>
+
+<Projectblock></Projectblock>
   </div>
   <Footer></Footer>
   </>
